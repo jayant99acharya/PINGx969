@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Platform Engineer</title>
+  <link rel="stylesheet" href="/mock.css" />
+  <style>
+    .form-group { margin: 12px 0; }
+    .select2-hidden-accessible { border: 0 !important; clip: rect(0 0 0 0) !important; height: 1px !important; margin: -1px !important; overflow: hidden !important; padding: 0 !important; position: absolute !important; width: 1px !important; }
+    .select2-container { display: inline-block; position: relative; }
+    .select2-selection { display: inline-block; border: 1px solid #bbb; border-radius: 6px; padding: 8px 12px; min-width: 80px; cursor: pointer; }
+    .select2-results__options { position: absolute; background: #fff; border: 1px solid #ccc; list-style: none; margin: 0; padding: 4px 0; max-height: 220px; overflow: auto; z-index: 30; min-width: 160px; }
+    .select2-results__option { padding: 6px 10px; cursor: pointer; }
+    .input-group { display: flex; gap: 6px; align-items: center; }
+  </style>
+</head>
+<body>
+  <!-- Modelled on <company>.keka.com/careers/applyjob/<id> (Keka Hire, inspected live): Bootstrap form with
+       <label for> labels, select2 dropdowns (an aria-hidden 1px <select class="select2-hidden-accessible"> plus a
+       span[role=combobox] look-alike) for the phone country code and salary currency, standardFields.* names,
+       a consent checkbox whose text is not a <label>, and a captcha. -->
+  <h3 class="text-primary job-title">Platform Engineer</h3>
+  <form id="keka-apply" novalidate>
+    <div class="form-group"><label for="resume-upload">Resume</label><input type="file" id="resume-upload" class="resume-upload" data-field-identifier="resume" /><small>This will auto-fill the fields below. 10MB max file size.</small></div>
+    <div class="form-group"><label for="firstName">First Name <span class="text-danger">*</span></label><input type="text" name="firstName" id="firstName" class="form-control form-control-lg" /></div>
+    <div class="form-group"><label for="middleName">Middle Name</label><input type="text" name="middleName" id="middleName" class="form-control form-control-lg" /></div>
+    <div class="form-group"><label for="lastName">Last Name <span class="text-danger">*</span></label><input type="text" name="lastName" id="lastName" class="form-control form-control-lg" /></div>
+    <div class="form-group"><label for="mobilePhone.number">Mobile Phone</label>
+      <div class="input-group">
+        <select name="mobilePhone.countryCode" id="mobilePhone.countryCode" class="form-control select2-hidden-accessible" aria-hidden="true" tabindex="-1" data-select2-id="mobilePhone.countryCode">
+          <option value="">Select</option><option value="+93">+93</option><option value="+1-684">+1-684</option><option value="+1">+1</option><option value="+44">+44</option><option value="+91">+91</option>
+        </select>
+        <span class="select2 select2-container" dir="ltr"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" aria-labelledby="select2-mobilePhonecountryCode-container" tabindex="0"><span class="select2-selection__rendered" id="select2-mobilePhonecountryCode-container" role="textbox" aria-readonly="true">Select</span></span></span></span>
+        <input type="text" name="mobilePhone.number" id="mobilePhone.number" class="form-control form-control-lg mobilePhone" />
+      </div></div>
+    <div class="form-group"><label for="email">Email <span class="text-danger">*</span></label><input type="email" name="email" id="email" class="form-control form-control-lg email" /></div>
+    <div class="form-group"><label for="gender">Gender</label><select name="gender" id="gender" class="form-control form-control-lg"><option value="">Select an option</option><option>Male</option><option>Female</option><option>Non-binary</option><option>Don't want to disclose</option></select></div>
+    <div class="form-group"><label for="dateOfBirth">Date of Birth</label><input type="text" name="standardFields.dateOfBirth.answer" id="dateOfBirth" class="form-control form-control-lg date-of-birth" /></div>
+    <div class="form-group"><label for="workExperience">Experience (in years)</label><input type="text" name="workExperience.years" id="workExperience" class="form-control form-control-lg" /></div>
+    <div class="form-group"><label for="currentSalary">Current Salary</label>
+      <div class="input-group">
+        <select name="currentSalary.currency" id="currentSalary.currency" class="form-control select2-hidden-accessible" aria-hidden="true" tabindex="-1"><option value="INR" selected>INR</option><option value="USD">USD</option></select>
+        <span class="select2 select2-container" dir="ltr"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0"><span class="select2-selection__rendered" role="textbox" aria-readonly="true">INR</span></span></span></span>
+        <input type="text" name="currentSalary.amount" id="currentSalary" class="form-control form-control-lg" />
+      </div></div>
+    <div class="form-group"><label for="expectedSalary">Expected Salary</label><input type="text" name="expectedSalary.amount" id="expectedSalary" class="form-control form-control-lg" /></div>
+    <div class="form-group"><label for="availability">Available To Join (in days)</label><input type="number" name="standardFields.availability.answer" id="availability" class="form-control form-control-lg" /></div>
+    <div class="form-group"><label for="currentLocation">Current Location</label><input type="text" name="standardFields.currentLocation.answer" id="currentLocation" class="form-control form-control-lg" /></div>
+    <div class="form-group"><div class="d-flex"><input type="checkbox" name="candidateConsent" id="candidateConsent" class="mt-1" /><span class="ml-2">I agree to Initech processing my personal data for recruitment purposes.</span></div></div>
+    <div class="form-group"><input type="text" name="captcha" id="captcha" class="form-control" aria-label="Captcha" /></div>
+    <button type="submit" class="btn btn-primary">Apply Now</button>
+  </form>
+  <script>
+    // select2 imitation: the rendered text follows the hidden <select> (on "change"); clicking opens a result list.
+    document.querySelectorAll('select.select2-hidden-accessible').forEach((sel) => {
+      const container = sel.nextElementSibling;
+      const combo = container.querySelector('[role=combobox]');
+      const rendered = container.querySelector('.select2-selection__rendered');
+      sel.addEventListener('change', () => (rendered.textContent = sel.selectedOptions[0]?.text ?? ''));
+      let list = null;
+      combo.addEventListener('click', () => {
+        if (list) return list.remove(), (list = null);
+        list = document.createElement('ul');
+        list.className = 'select2-results__options';
+        list.setAttribute('role', 'listbox');
+        for (const o of sel.options) {
+          if (!o.value) continue;
+          const li = document.createElement('li');
+          li.className = 'select2-results__option';
+          li.setAttribute('role', 'option');
+          li.textContent = o.text;
+          li.addEventListener('click', () => {
+            sel.value = o.value;
+            sel.dispatchEvent(new Event('change', { bubbles: true }));
+            list.remove();
+            list = null;
+          });
+          list.append(li);
+        }
+        container.append(list);
+      });
+    });
+    document.getElementById('keka-apply').addEventListener('submit', (e) => {
+      e.preventDefault();
+      location.href = '/submitted.html?from=keka';
+    });
+  </script>
+</body>
+</html>

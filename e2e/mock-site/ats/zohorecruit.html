@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Initech - Senior Software Engineer in Austin</title>
+  <link rel="stylesheet" href="/mock.css" />
+  <style>
+    .crc-form-label-row { font-weight: 600; margin: 14px 0 4px; }
+    .crc-form-field { display: flex; gap: 8px; }
+    .crc-form-field > * { flex: 1; }
+    .cxBorderBottom { width: 100%; padding: 8px; border: 1px solid #bbb; border-radius: 6px; box-sizing: border-box; }
+    .lyteDummyEventContainer { border: 1px solid #bbb; border-radius: 6px; padding: 8px; cursor: pointer; background: #fff; }
+    lyte-drop-box { display: block; position: absolute; background: #fff; border: 1px solid #ccc; border-radius: 6px; min-width: 220px; box-shadow: 0 6px 18px rgba(0,0,0,.15); z-index: 20; }
+    lyte-drop-box.lyteDropdownHidden { display: none; }
+    lyte-drop-item { display: block; padding: 8px 10px; cursor: pointer; }
+    lyte-drop-item:hover { background: #e8f0fe; }
+    .fileuploadInput { width: 0; height: 0; opacity: 0; position: absolute; }
+  </style>
+</head>
+<body class="cw-pages">
+  <!-- Modelled on <company>.zohorecruit.com/jobs/Careers/<id>/<title> → "I'm interested" (inspected live):
+       Lyte/Crux web components WITHOUT shadow DOM; inputs named rec-form_<id> with no <label>; the caption is
+       in cx-prop-label (a visible label row can span two fields: Salutation + First Name); picklists are
+       div[role=combobox][aria-controls] whose lyte-drop-box moves to <body> while open, options are
+       lyte-drop-item[role=option][data-value], "-None-" is the empty choice. -->
+  <h1>Senior Software Engineer</h1>
+  <form id="zr-form" class="crc-form">
+    <div class="crc-form-label-row">First Name <span class="mandatory">*</span></div>
+    <div class="crc-form-field cnl-firstname-row">
+      <crux-picklist-component id="rec-form_1600" cx-prop-label="Salutation" cx-prop-zcqa="manual_Salutation" cx-prop-name="rec-form_1600" data-options='["-None-","Mr.","Ms.","Mx.","Dr."]'></crux-picklist-component>
+      <crux-text-component id="rec-form_1542" cx-prop-label="First Name" cx-prop-zcqa="manual_First_Name" cx-prop-name="rec-form_1542"></crux-text-component>
+    </div>
+    <div class="crc-form-label-row">Last Name <span class="mandatory">*</span></div>
+    <div class="crc-form-field"><crux-text-component id="rec-form_1544" cx-prop-label="Last Name" cx-prop-zcqa="manual_Last_Name" cx-prop-name="rec-form_1544"></crux-text-component></div>
+    <div class="crc-form-label-row">Email <span class="mandatory">*</span></div>
+    <div class="crc-form-field"><crux-text-component id="rec-form_1548" cx-prop-label="Email" cx-prop-zcqa="manual_Email" cx-prop-name="rec-form_1548"></crux-text-component></div>
+    <div class="crc-form-label-row">Phone Number</div>
+    <div class="crc-form-field"><crux-phone-component id="rec-form_1554" cx-prop-label="Phone Number" cx-prop-zcqa="manual_Mobile" cx-prop-name="rec-form_1554" data-options='["United States (+1)","India (+91)","United Kingdom (+44)"]'></crux-phone-component></div>
+    <div class="crc-form-label-row">Current Employer</div>
+    <div class="crc-form-field"><crux-text-component id="rec-form_1568" cx-prop-label="Current Employer" cx-prop-zcqa="manual_Current_Employer" cx-prop-name="rec-form_1568"></crux-text-component></div>
+    <div class="crc-form-label-row">How did you hear about this position?</div>
+    <div class="crc-form-field"><crux-picklist-component id="rec-form_2122" cx-prop-label="How did you hear about this position?" cx-prop-name="rec-form_2122" data-options='["-None-","LinkedIn","Referral","Job Board"]'></crux-picklist-component></div>
+    <div class="crc-form-label-row">Are you legally authorized to work in the United States? <span class="mandatory">*</span></div>
+    <div class="crc-form-field"><crux-picklist-component id="rec-form_8323" cx-prop-label="Are you legally authorized to work in the United States?" cx-prop-name="rec-form_8323" data-options='["-None-","Yes","No"]'></crux-picklist-component></div>
+    <div class="crc-form-label-row">Will you now or in the future require visa sponsorship? <span class="mandatory">*</span></div>
+    <div class="crc-form-field"><crux-picklist-component id="rec-form_8324" cx-prop-label="Will you now or in the future require visa sponsorship?" cx-prop-name="rec-form_8324" data-options='["-None-","Yes","No"]'></crux-picklist-component></div>
+    <div class="crc-form-label-row">Expected Salary</div>
+    <div class="crc-form-field"><crux-text-component id="rec-form_3126" cx-prop-label="Expected Salary" cx-prop-zcqa="manual_Expected_Salary" cx-prop-name="rec-form_3126"></crux-text-component></div>
+    <div class="crc-form-label-row">Notice period (days)</div>
+    <div class="crc-form-field"><crux-text-component id="rec-form_8245" cx-prop-label="Notice period (days)" cx-prop-name="rec-form_8245"></crux-text-component></div>
+    <div class="crc-form-label-row">Resume <span class="mandatory">*</span></div>
+    <div class="crc-form-field"><crux-file-component id="rec-form_2325" cx-prop-label="Resume" cx-prop-name="rec-form_2325"></crux-file-component></div>
+    <button type="submit" class="cwApplyBtn">Submit</button>
+  </form>
+  <script>
+    // Lyte components render into light DOM (no shadow roots), like the live site.
+    let seq = 0;
+    const picklist = (host, options, id) => {
+      host.innerHTML = `<div class="cxElementValue"><lyte-dropdown class="cxBoxDropdown"><div class="lyteDummyEventContainer" tabindex="0" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="${id}"><lyte-drop-button><span class="lyteDropPlaceholderNormal">-None-</span></lyte-drop-button></div><lyte-yield style="display:none"><lyte-drop-box class="cxDropbox lyteDropdownHidden"><lyte-drop-body id="${id}" role="listbox"></lyte-drop-body></lyte-drop-box></lyte-yield></lyte-dropdown></div>`;
+      const combo = host.querySelector('[role=combobox]');
+      const box = host.querySelector('lyte-drop-box');
+      const yieldEl = host.querySelector('lyte-yield');
+      const body = box.querySelector('lyte-drop-body');
+      for (const o of options) {
+        const item = document.createElement('lyte-drop-item');
+        item.setAttribute('role', 'option');
+        item.setAttribute('data-value', o);
+        item.textContent = o;
+        item.addEventListener('click', () => {
+          combo.querySelector('span').textContent = o;
+          combo.querySelector('span').className = o === '-None-' ? 'lyteDropPlaceholderNormal' : 'lyteDropdownLabel';
+          close();
+        });
+        body.append(item);
+      }
+      const close = () => {
+        box.classList.add('lyteDropdownHidden');
+        yieldEl.append(box); // back into the component
+        combo.setAttribute('aria-expanded', 'false');
+      };
+      combo.addEventListener('click', () => {
+        if (combo.getAttribute('aria-expanded') === 'true') return close();
+        const r = combo.getBoundingClientRect();
+        box.style.left = `${r.left + scrollX}px`;
+        box.style.top = `${r.bottom + scrollY}px`;
+        document.body.append(box); // the live site portals the open menu to <body>
+        box.classList.remove('lyteDropdownHidden');
+        combo.setAttribute('aria-expanded', 'true');
+      });
+    };
+    document.querySelectorAll('crux-text-component').forEach((c) => {
+      c.innerHTML = `<div class="cxElementValue"><lyte-input class="cxW100Per cxBoxInput lyteInputBox"><div class="lyteField"><input data-tabindex="" type="text" value="" id="" class="cxBorderBottom" maxlength="125" name="${c.getAttribute('cx-prop-name')}" placeholder="" autocomplete="false"></div></lyte-input></div>`;
+    });
+    document.querySelectorAll('crux-picklist-component').forEach((c) => picklist(c, JSON.parse(c.dataset.options), c.getAttribute('cx-prop-label').replace(/\W+/g, '_') + seq++));
+    document.querySelectorAll('crux-phone-component').forEach((c) => {
+      c.innerHTML = `<div class="cxElementValue"><div class="cxDropdownInputGroup"><span class="cc"></span><input type="text" class="cxBorderBottom" name="${c.getAttribute('cx-prop-name')}" autocomplete="false"></div></div>`;
+      const cc = document.createElement('div');
+      c.querySelector('.cc').append(cc);
+      picklist(cc, JSON.parse(c.dataset.options), `Lyte_Drop_Body_${seq++}`);
+    });
+    document.querySelectorAll('crux-file-component').forEach((c) => {
+      c.innerHTML = `<label class="cxFileLabel">Attach<input type="file" class="fileuploadInput" name="${c.getAttribute('cx-prop-name')}_file"></label>`;
+    });
+    document.getElementById('zr-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      location.href = '/submitted.html?from=zohorecruit';
+    });
+  </script>
+</body>
+</html>

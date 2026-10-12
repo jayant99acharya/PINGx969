@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Job Application for Site Reliability Engineer at Initech</title>
+  <link rel="stylesheet" href="/mock.css" />
+</head>
+<body>
+  <!-- Simulates a framework that hydrates the whole document late (Greenhouse job-boards uses Remix/React):
+       if any element was inserted into <html>/<body> before hydration, it reports a hydration mismatch and
+       re-renders the document from the server HTML, discarding the foreign nodes (React error #418). -->
+  <h1>Site Reliability Engineer</h1>
+  <form id="app-form">
+    <label for="first_name">First Name</label><input id="first_name" type="text" />
+    <label for="last_name">Last Name</label><input id="last_name" type="text" />
+    <label for="email">Email</label><input id="email" type="email" />
+    <label for="phone">Phone</label><input id="phone" type="tel" />
+    <button type="submit">Submit application</button>
+  </form>
+  <script>window.__remixContext = { url: location.pathname };</script>
+  <script>
+    const serverHtml = document.documentElement.outerHTML;
+    const shape = () => [document.documentElement.children.length, document.body.children.length].join('/');
+    const before = shape();
+    window.__hydrationMismatches = 0;
+    // Diagnostics: which nodes were inserted into <html>/<body> before hydration, and when.
+    window.__foreign = [];
+    const t0 = performance.now();
+    new MutationObserver((muts) => {
+      for (const m of muts) for (const n of m.addedNodes) if (n.nodeType === 1 && (m.target === document.documentElement || m.target === document.body)) window.__foreign.push(`${Math.round(performance.now() - t0)}ms <${n.tagName.toLowerCase()}${n.id ? '#' + n.id : ''}${n.getAttribute('data-px-ui') ? ' data-px-ui=' + n.getAttribute('data-px-ui') : ''}${typeof n.className === 'string' && n.className ? ' .' + n.className : ''}>`);
+    }).observe(document, { childList: true, subtree: true });
+    setTimeout(() => {
+      if (shape() !== before) {
+        window.__hydrationMismatches++;
+        console.error('Hydration failed because the initial UI does not match what was rendered on the server.');
+        const fresh = new DOMParser().parseFromString(serverHtml, 'text/html').documentElement;
+        document.replaceChild(document.importNode(fresh, true), document.documentElement);
+      }
+      document.documentElement.setAttribute('data-hydrated', 'true');
+      document.body.__reactFiber$mock = {}; // what React leaves on elements it has hydrated
+    }, 1500);
+  </script>
+</body>
+</html>

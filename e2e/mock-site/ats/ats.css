@@ -1,0 +1,22 @@
+/* Visual approximations of ATS widgets used by the mock pages (behaviour matters, not looks). */
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.select__control { display: flex; align-items: center; border: 1px solid #bbb; border-radius: 6px; padding: 4px 8px; min-height: 36px; position: relative; background: #fff; }
+.select__value-container { flex: 1; display: grid; }
+.select__placeholder, .select__single-value, .select__input-container { grid-area: 1 / 1; }
+.select__placeholder { color: #888; }
+.select__input { border: 0 !important; outline: none; padding: 4px 0 !important; width: 100% !important; background: transparent; }
+.select__menu { position: absolute; left: 0; right: 0; top: 100%; z-index: 10; background: #fff; border: 1px solid #ccc; border-radius: 6px; box-shadow: 0 6px 18px rgba(0,0,0,.15); }
+[role="option"] { padding: 8px 10px; cursor: pointer; }
+[role="option"]:hover, [role="option"][aria-selected="true"] { background: #e8f0fe; }
+.menu-portal { position: absolute; z-index: 20; background: #fff; border: 1px solid #ccc; border-radius: 6px; min-width: 240px; box-shadow: 0 6px 18px rgba(0,0,0,.15); margin: 0; padding: 4px 0; list-style: none; }
+.dropdown-button { display: block; width: 100%; text-align: left; background: #fff; color: #222; border: 1px solid #bbb; border-radius: 6px; padding: 8px; margin-top: 0; font-weight: 400; }
+.toggle-row { display: flex; gap: 8px; }
+.toggle-row button { margin-top: 0; background: #fff; color: #222; border: 1px solid #bbb; }
+.toggle-row button[aria-pressed="true"] { background: #2d6cdf; color: #fff; }
+.toggle-row input { position: absolute; opacity: 0; width: 0; height: 0; }
+.aria-choice { display: flex; align-items: center; gap: 8px; padding: 6px 0; cursor: pointer; }
+.aria-choice .box { width: 16px; height: 16px; border: 2px solid #555; border-radius: 50%; display: inline-block; }
+.aria-choice[role="checkbox"] .box { border-radius: 3px; }
+.aria-choice[aria-checked="true"] .box { background: #2d6cdf; border-color: #2d6cdf; }
+.aria-choice input { display: none; }
+.step[hidden] { display: none; }

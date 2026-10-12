@@ -1,0 +1,37 @@
+name: Release
+
+# Push a tag like v0.2.0 (after updating CHANGELOG.md and the versions) to run every check and publish a
+# GitHub Release with ready-to-load extension zips:
+#   pingx969-extension-<v>-localhost-4000.zip  for people who run the server on their own computer
+#   pingx969-extension-<v>-<host>.zip           for your hosted server (set the repository variable API_ORIGIN)
+on:
+  push:
+    tags: ['v*.*.*']
+
+jobs:
+  verify:
+    uses: ./.github/workflows/ci.yml
+    permissions:
+      contents: read
+
+  release:
+    needs: verify
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # create the GitHub Release
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: Package for a server on the user's own computer
+        run: npm run package:extension -- --localhost
+      - name: Package for the hosted server (optional)
+        if: ${{ vars.API_ORIGIN != '' }}
+        run: npm run package:extension -- --api=${{ vars.API_ORIGIN }}
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: release/*.zip
+          generate_release_notes: true

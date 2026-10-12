@@ -1,0 +1,34 @@
+# Jane Doe
+Seattle, WA | jane.doe@example.com | (206) 555-0142 | linkedin.com/in/janedoe | github.com/janedoe
+
+## Summary
+Software engineer with 8 years of experience building web applications and backend services. Enjoys working across the stack and mentoring teammates.
+
+## Experience
+**Senior Software Engineer** | Northwind Commerce | Seattle, WA | Mar 2021 – Present
+- Built backend services for internal applications.
+- Designed REST APIs in Python and Flask serving 2M requests per day.
+- Migrated legacy batch jobs to AWS Lambda and S3, cutting infrastructure cost by 30%.
+- Worked on containerizing services with Docker and setting up CI/CD with GitHub Actions for 12 services across three product teams.
+- Mentored 3 junior engineers through code reviews and pairing.
+
+**Software Engineer** | Contoso Health | Portland, OR | Jun 2018 – Feb 2021
+- Developed patient scheduling features using React and Node.js.
+- Responsible for maintaining Postgres database schemas and writing SQL reports.
+- Improved page load time by 40% by optimizing queries and adding Redis caching.
+- Collaborated with product managers and designers in an Agile team.
+
+## Education
+University of Washington | B.S., Computer Science | 2014 – 2018
+
+## Skills
+Languages: Python, JavaScript, TypeScript, SQL
+Frameworks: React, Node.js, Flask
+Cloud & Tools: AWS, Docker, Git, GitHub Actions, Redis, PostgreSQL
+
+## Projects
+OpenMetrics Dashboard | github.com/janedoe/openmetrics
+- Built a real-time metrics dashboard with TypeScript and WebSockets used by 200+ developers.
+
+## Certifications
+AWS Certified Developer – Associate | Amazon Web Services | 2022

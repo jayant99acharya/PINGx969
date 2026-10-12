@@ -1,0 +1,88 @@
+{
+  "basics": {
+    "name": "Jane Doe",
+    "label": "Senior Software Engineer",
+    "email": "jane.doe@example.com",
+    "phone": "(206) 555-0142",
+    "summary": "Software engineer with 8 years of experience building web applications and backend services. Enjoys working across the stack and mentoring teammates.",
+    "location": {
+      "city": "Seattle",
+      "region": "WA"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "url": "https://linkedin.com/in/janedoe"
+      },
+      {
+        "network": "GitHub",
+        "url": "https://github.com/janedoe"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Northwind Commerce",
+      "position": "Senior Software Engineer",
+      "startDate": "2021-03",
+      "highlights": [
+        "Built backend services for internal applications.",
+        "Designed REST APIs in Python and Flask serving 2M requests per day.",
+        "Migrated legacy batch jobs to AWS Lambda and S3, cutting infrastructure cost by 30%.",
+        "Worked on containerizing services with Docker and setting up CI/CD with GitHub Actions for 12 services across three product teams.",
+        "Mentored 3 junior engineers through code reviews and pairing."
+      ]
+    },
+    {
+      "name": "Contoso Health",
+      "position": "Software Engineer",
+      "startDate": "2018-06",
+      "endDate": "2021-02",
+      "highlights": [
+        "Developed patient scheduling features using React and Node.js.",
+        "Responsible for maintaining Postgres database schemas and writing SQL reports.",
+        "Improved page load time by 40% by optimizing queries and adding Redis caching.",
+        "Collaborated with product managers and designers in an Agile team."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of Washington",
+      "studyType": "B.S.",
+      "area": "Computer Science",
+      "startDate": "2014",
+      "endDate": "2018"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Languages",
+      "keywords": [
+        "Python",
+        "JavaScript",
+        "TypeScript",
+        "SQL"
+      ]
+    },
+    {
+      "name": "Frameworks",
+      "keywords": [
+        "React",
+        "Node.js",
+        "Flask"
+      ]
+    },
+    {
+      "name": "Cloud & Tools",
+      "keywords": [
+        "AWS",
+        "Docker",
+        "Git",
+        "GitHub Actions",
+        "Redis",
+        "PostgreSQL"
+      ]
+    }
+  ]
+}

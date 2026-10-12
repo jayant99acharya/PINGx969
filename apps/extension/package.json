@@ -1,0 +1,21 @@
+{
+  "name": "@pingx969/extension",
+  "version": "0.1.0",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node build.mjs --watch"
+  },
+  "dependencies": {
+    "@pingx969/field-detector": "*",
+    "@pingx969/profile": "*",
+    "@pingx969/shared": "*",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.3.4"
+  }
+}

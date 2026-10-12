@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Data Engineer at Hooli</title>
+  <link rel="stylesheet" href="/mock.css" />
+</head>
+<body>
+  <h1>Data Engineer — Hooli</h1>
+  <form id="prefilled-form" action="/submitted.html">
+    <p>We pre-filled some details from your Hooli account.</p>
+    <div class="row"><label for="pf-first">First name</label><input id="pf-first" name="first_name" value="Janet" /></div>
+    <div class="row"><label for="pf-last">Last name</label><input id="pf-last" name="last_name" /></div>
+    <div class="row"><label for="pf-email">Email</label><input id="pf-email" name="email" type="email" value="j.doe@hooli-account.example" /></div>
+    <div class="row"><label for="pf-phone">Phone number</label><input id="pf-phone" name="phone" type="tel" /></div>
+    <div class="row"><label for="pf-country">Country</label>
+      <select id="pf-country" name="country"><option value="">Select country</option><option value="CA">Canada</option><option value="US" selected>United States</option><option value="GB">United Kingdom</option></select></div>
+    <div class="row"><label for="pf-li">LinkedIn</label><input id="pf-li" name="linkedin" /></div>
+    <button type="submit">Submit</button>
+  </form>
+  <script src="/mock.js"></script>
+</body>
+</html>

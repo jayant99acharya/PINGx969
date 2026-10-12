@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Job Application for Senior Backend Engineer at Globex Payments</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/mock.css" />
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"JobPosting","title":"Senior Backend Engineer","hiringOrganization":{"@type":"Organization","name":"Globex Payments"},
+     "description":"<p>Globex Payments is building payment infrastructure.</p><ul><li>Design, build, and operate scalable backend services and REST APIs in Python</li><li>Experience with AWS and Docker</li></ul>"}
+  </script>
+</head>
+<body>
+  <div id="app_body">
+    <div id="header">
+      <h1 class="app-title">Senior Backend Engineer</h1>
+      <span class="company-name">at Globex Payments</span>
+      <div class="location">Seattle, WA (Hybrid)</div>
+    </div>
+    <div id="content">
+      <p>Globex Payments is building the next generation of payment infrastructure for online merchants. You will design, build and operate scalable backend services and REST APIs in Python on AWS.</p>
+    </div>
+    <form id="application_form" method="post" action="/submitted.html">
+      <h2>Apply for this Job</h2>
+      <div class="field"><label for="first_name">First Name <span class="asterisk">*</span></label><input type="text" id="first_name" name="job_application[first_name]" required /></div>
+      <div class="field"><label for="last_name">Last Name <span class="asterisk">*</span></label><input type="text" id="last_name" name="job_application[last_name]" required /></div>
+      <div class="field"><label for="email">Email <span class="asterisk">*</span></label><input type="text" id="email" name="job_application[email]" required /></div>
+      <div class="field"><label for="phone">Phone</label><input type="text" id="phone" name="job_application[phone]" /></div>
+      <div class="field"><label for="resume">Resume/CV <span class="asterisk">*</span></label><input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx,.txt,.rtf" /></div>
+      <div class="field"><label for="question_101">LinkedIn Profile</label><input type="text" id="question_101" name="job_application[answers_attributes][0][text_value]" /></div>
+      <div class="field"><label for="question_102">Website</label><input type="text" id="question_102" name="job_application[answers_attributes][1][text_value]" /></div>
+      <div class="field">
+        <label for="question_103">Are you legally authorized to work in the United States? <span class="asterisk">*</span></label>
+        <select id="question_103" name="job_application[answers_attributes][2][boolean_value]" required>
+          <option value="">--</option><option value="1">Yes</option><option value="0">No</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="question_104">Will you now or in the future require sponsorship for employment visa status (e.g. H-1B visa status)? <span class="asterisk">*</span></label>
+        <select id="question_104" name="job_application[answers_attributes][3][boolean_value]" required>
+          <option value="">--</option><option value="1">Yes</option><option value="0">No</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="question_105">Do you have experience working in a regulated industry such as finance or healthcare?</label>
+        <textarea id="question_105" name="job_application[answers_attributes][4][text_value]" rows="3"></textarea>
+      </div>
+      <div class="field"><label for="question_106">How did you hear about this job?</label><input type="text" id="question_106" name="job_application[answers_attributes][5][text_value]" /></div>
+      <fieldset class="eeoc">
+        <legend>Voluntary Self-Identification</legend>
+        <div class="field"><label for="gender">Gender</label>
+          <select id="gender" name="job_application[gender]"><option value="">Please select</option><option value="1">Male</option><option value="2">Female</option><option value="3">Decline To Self Identify</option></select></div>
+        <div class="field"><label for="hispanic">Are you Hispanic/Latino?</label>
+          <select id="hispanic" name="job_application[hispanic_ethnicity]"><option value="">Please select</option><option value="Yes">Yes</option><option value="No">No</option><option value="Decline">Decline To Self Identify</option></select></div>
+        <div class="field"><label for="veteran">Veteran Status</label>
+          <select id="veteran" name="job_application[veteran_status]"><option value="">Please select</option><option value="1">I am not a protected veteran</option><option value="2">I identify as one or more of the classifications of protected veteran</option><option value="3">I don't wish to answer</option></select></div>
+      </fieldset>
+      <button type="submit" id="submit_app">Submit Application</button>
+    </form>
+  </div>
+  <script src="/mock.js"></script>
+</body>
+</html>

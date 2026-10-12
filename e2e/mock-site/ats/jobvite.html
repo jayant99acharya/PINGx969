@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Initech Careers</title>
+  <link rel="stylesheet" href="/mock.css" />
+  <link rel="stylesheet" href="/ats/ats.css" />
+</head>
+<body class="jv-page">
+  <!-- Modelled on jobs.jobvite.com/<company>/job/<id>/apply (inspected live up to the gate): a "Data Consent" step
+       (location select + Accept) precedes the Angular application form with jv-field-* ids. -->
+  <div class="jv-logo"><img alt="Initech" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" /></div>
+  <h2 class="jv-header">Senior Site Reliability Engineer</h2>
+
+  <section id="jv-consent">
+    <h3>Data Consent</h3>
+    <label for="jv-country-select">Location of Residence and Language:</label>
+    <select id="jv-country-select" class="ng-pristine ng-untouched">
+      <option value="">Select your location of residence and language</option>
+      <option value="us">United States - English</option>
+      <option value="in">India - English</option>
+    </select>
+    <div id="jv-consent-text" hidden>
+      <p>Initech will process your personal data to evaluate your application, as described in our privacy notice.</p>
+      <button type="button" class="jv-button-primary" id="jv-accept">Accept</button>
+      <button type="button" class="jv-button-secondary" id="jv-decline">Decline</button>
+    </div>
+  </section>
+
+  <form id="jv-apply" class="jv-apply-form" hidden></form>
+  <template id="jv-form-template">
+    <h3>Apply</h3>
+    <div class="jv-form-field"><label for="jv-field-a1">First Name <span class="jv-required">*</span></label><input id="jv-field-a1" name="firstName" class="ng-pristine ng-invalid" type="text" required /></div>
+    <div class="jv-form-field"><label for="jv-field-a2">Last Name <span class="jv-required">*</span></label><input id="jv-field-a2" name="lastName" class="ng-pristine" type="text" required /></div>
+    <div class="jv-form-field"><label for="jv-field-a3">Email <span class="jv-required">*</span></label><input id="jv-field-a3" name="email" class="ng-pristine" type="email" required /></div>
+    <div class="jv-form-field"><label for="jv-field-a4">Phone</label><input id="jv-field-a4" name="phone" class="ng-pristine" type="tel" /></div>
+    <div class="jv-form-field"><label for="jv-field-a5">Address</label><input id="jv-field-a5" name="address" type="text" /></div>
+    <div class="jv-form-field"><label for="jv-field-a6">City</label><input id="jv-field-a6" name="city" type="text" /></div>
+    <div class="jv-form-field"><label for="jv-field-a7">State/Province</label>
+      <select id="jv-field-a7" name="state"><option value="">Select...</option><option value="CA">California</option><option value="NY">New York</option><option value="WA">Washington</option></select></div>
+    <div class="jv-form-field"><label for="jv-field-a8">Postal Code</label><input id="jv-field-a8" name="postalCode" type="text" /></div>
+    <div class="jv-form-field"><label for="jv-field-resume">Resume <span class="jv-required">*</span></label><input id="jv-field-resume" type="file" /></div>
+    <div class="jv-form-field"><label for="jv-field-a9">How did you hear about this job?</label>
+      <select id="jv-field-a9" name="source"><option value="">Select...</option><option>Job board</option><option>Referral</option><option>Company website</option></select></div>
+    <fieldset class="jv-form-field"><legend>Are you legally authorized to work in the United States? <span class="jv-required">*</span></legend>
+      <label><input type="radio" name="jv-q-100" value="Yes" /> Yes</label><label><input type="radio" name="jv-q-100" value="No" /> No</label></fieldset>
+    <fieldset class="jv-form-field"><legend>Will you now or in the future require visa sponsorship? <span class="jv-required">*</span></legend>
+      <label><input type="radio" name="jv-q-101" value="Yes" /> Yes</label><label><input type="radio" name="jv-q-101" value="No" /> No</label></fieldset>
+    <div class="jv-form-field"><label for="jv-field-q102">Describe your on-call experience. <span class="jv-required">*</span></label><textarea id="jv-field-q102" name="jv-q-102"></textarea></div>
+    <div class="jv-form-field"><label><input type="checkbox" name="certify" /> I certify that the information in this application is true and complete.</label></div>
+    <button type="submit" class="jv-button-primary">Send Application</button>
+  </template>
+  <script>
+    const sel = document.getElementById('jv-country-select');
+    sel.addEventListener('change', () => (document.getElementById('jv-consent-text').hidden = !sel.value));
+    document.getElementById('jv-accept').addEventListener('click', () => {
+      document.getElementById('jv-consent').remove();
+      const form = document.getElementById('jv-apply');
+      form.replaceChildren(document.getElementById('jv-form-template').content.cloneNode(true));
+      form.hidden = false;
+    });
+    document.getElementById('jv-apply').addEventListener('submit', (e) => {
+      e.preventDefault();
+      location.href = '/submitted.html?from=jobvite';
+    });
+  </script>
+</body>
+</html>

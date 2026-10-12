@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Platform Engineer (f/m/x) | Jobs at Initech GmbH</title>
+  <link rel="stylesheet" href="/mock.css" />
+</head>
+<body>
+  <!-- Modelled on <company>.jobs.personio.de/job/<id>/apply (inspected live): labelled inputs, native selects with a
+       "Please select" placeholder, and a work-authorization question for a country the profile may not list. -->
+  <h1>Platform Engineer (f/m/x)</h1>
+  <form id="personio-form" action="/personio/apply">
+    <div><label for="first_name">First</label><input id="first_name" name="first_name" type="text" autocomplete="given-name" /></div>
+    <div><label for="last_name">Last</label><input id="last_name" name="last_name" type="text" autocomplete="family-name" /></div>
+    <div><label for="email">Email</label><input id="email" name="email" type="email" /></div>
+    <div><label for="phone">Phone</label><input id="phone" name="phone" type="text" /></div>
+    <div><label for="linkedin">LinkedIn</label><input id="linkedin" name="custom_attribute_linkedin" type="text" /></div>
+    <div><label for="available_from">Available from</label><input id="available_from" name="available_from" type="text" /></div>
+    <div><label for="salary">Expected salary</label><input id="salary" name="salary_expectations" type="text" /></div>
+    <div><label for="german">What is your level of German?</label><select id="german" name="q_1"><option value="">Please select</option><option>No Knowledge</option><option>Beginner (A1 - A2)</option><option>Fluent (C1 - C2)</option></select></div>
+    <div><label for="auth_us">Are you legally authorized to work in the United States?</label><select id="auth_us" name="q_2"><option value="">Please select</option><option>Yes</option><option>No</option></select></div>
+    <div><label for="auth_de">Are you legally authorized to work in Germany?</label><select id="auth_de" name="q_3"><option value="">Please select</option><option>Yes</option><option>No</option></select></div>
+    <div><label for="cv">CV</label><input id="cv" name="documents[cv]" type="file" /></div>
+    <div><label><input type="checkbox" name="privacy_policy_acceptance" /> I have read and accept the privacy policy.</label></div>
+    <button type="submit">Send application</button>
+  </form>
+  <script src="/mock.js"></script>
+</body>
+</html>

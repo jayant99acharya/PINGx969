@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Platform Engineer - Initech</title>
+  <link rel="stylesheet" href="/mock.css" />
+  <link rel="stylesheet" href="/ats/ats.css" />
+</head>
+<body>
+  <!-- Modelled on <company>.bamboohr.com/careers/<id> (BambooHR "Fabric" UI): fab-* classes, native text inputs,
+       and fab-SelectToggle buttons that open a listbox menu in a portal for State, Country and Yes/No questions. -->
+  <h2 class="ApplicationForm__title">Platform Engineer</h2>
+  <form class="fab-Form" id="bhr-form">
+    <div class="fab-FormField"><label class="fab-Label fab-Label--required" for="firstName">First Name</label><input class="fab-TextInput" id="firstName" name="firstName" type="text" required /></div>
+    <div class="fab-FormField"><label class="fab-Label fab-Label--required" for="lastName">Last Name</label><input class="fab-TextInput" id="lastName" name="lastName" type="text" required /></div>
+    <div class="fab-FormField"><label class="fab-Label fab-Label--required" for="email">Email</label><input class="fab-TextInput" id="email" name="email" type="text" required /></div>
+    <div class="fab-FormField"><label class="fab-Label" for="phone">Phone</label><input class="fab-TextInput" id="phone" name="phone" type="text" /></div>
+    <div class="fab-FormField"><label class="fab-Label" for="streetAddress">Address</label><input class="fab-TextInput" id="streetAddress" name="streetAddress" type="text" /></div>
+    <div class="fab-FormField"><label class="fab-Label" for="city">City</label><input class="fab-TextInput" id="city" name="city" type="text" /></div>
+    <div class="fab-FormField"><label class="fab-Label" for="state">State</label>
+      <div class="fab-Select"><button type="button" class="fab-SelectToggle dropdown-button" id="state" aria-haspopup="listbox" aria-expanded="false" data-options='["Arizona","California","New York","Washington"]'>–Select–</button><input type="hidden" name="state" /></div></div>
+    <div class="fab-FormField"><label class="fab-Label" for="zip">ZIP</label><input class="fab-TextInput" id="zip" name="zip" type="text" /></div>
+    <div class="fab-FormField"><label class="fab-Label" for="countryId">Country</label>
+      <div class="fab-Select"><button type="button" class="fab-SelectToggle dropdown-button" id="countryId" aria-haspopup="listbox" aria-expanded="false" data-options='["United States","Canada","India"]'>–Select–</button><input type="hidden" name="countryId" /></div></div>
+    <div class="fab-FormField"><label class="fab-Label fab-Label--required" for="resumeFileId">Resume</label><input type="file" id="resumeFileId" name="resumeFileId" /></div>
+    <div class="fab-FormField"><label class="fab-Label" for="dateAvailable">Date Available</label><input class="fab-TextInput" id="dateAvailable" name="dateAvailable" type="text" placeholder="mm/dd/yyyy" /></div>
+    <div class="fab-FormField"><label class="fab-Label" for="desiredPay">Desired Pay</label><input class="fab-TextInput" id="desiredPay" name="desiredPay" type="text" /></div>
+    <div class="fab-FormField"><label class="fab-Label" for="websiteUrl">Website, Blog, or Portfolio</label><input class="fab-TextInput" id="websiteUrl" name="websiteUrl" type="text" /></div>
+    <div class="fab-FormField"><label class="fab-Label" for="linkedinUrl">LinkedIn Profile URL</label><input class="fab-TextInput" id="linkedinUrl" name="linkedinUrl" type="text" /></div>
+    <div class="fab-FormField"><label class="fab-Label fab-Label--required" for="customQuestions-1">Are you legally authorized to work in the United States?</label>
+      <div class="fab-Select"><button type="button" class="fab-SelectToggle dropdown-button" id="customQuestions-1" aria-haspopup="listbox" aria-expanded="false" data-options='["Yes","No"]'>–Select–</button><input type="hidden" name="customQuestions[1]" /></div></div>
+    <div class="fab-FormField"><label class="fab-Label fab-Label--required" for="customQuestions-2">Will you now or in the future require visa sponsorship?</label>
+      <div class="fab-Select"><button type="button" class="fab-SelectToggle dropdown-button" id="customQuestions-2" aria-haspopup="listbox" aria-expanded="false" data-options='["Yes","No"]'>–Select–</button><input type="hidden" name="customQuestions[2]" /></div></div>
+    <div class="fab-FormField"><label class="fab-Label" for="customQuestions-3">Who referred you to Initech?</label><input class="fab-TextInput" id="customQuestions-3" name="customQuestions[3]" type="text" /></div>
+    <button type="submit" class="fab-Button">Submit Application</button>
+  </form>
+  <script src="/ats/listbox-lite.js"></script>
+  <script>mountListboxes(document);</script>
+  <script src="/mock.js"></script>
+</body>
+</html>

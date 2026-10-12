@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Platform Engineer (Remote - US) - Initech</title>
+  <meta property="og:site_name" content="Initech" />
+  <link rel="stylesheet" href="/mock.css" />
+  <style>.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }</style>
+</head>
+<body>
+  <!-- Modelled on <company>.teamtailor.com/jobs/<id>/applications/new (inspected live): a Rails form whose labels
+       end in a visually-hidden "Required" (so their text reads "First nameRequired"), radio questions with a
+       short title before the question, and three consent checkboxes. -->
+  <h1>Platform Engineer (Remote - US)</h1>
+  <form action="/jobs/1-platform-engineer/applications" method="post" data-controller="application-form" id="tt-form">
+    <fieldset><legend>US Lawful Worker<span class="sr-only">Required</span> Are you presently authorized to work lawfully in the United States?</legend>
+      <label><input type="radio" name="candidate[answers][1]" value="Yes" required /> Yes</label><label><input type="radio" name="candidate[answers][1]" value="No" /> No</label></fieldset>
+    <fieldset><legend>US Sponsorship<span class="sr-only">Required</span> Will you now or in the future require Initech to sponsor an employment visa?</legend>
+      <label><input type="radio" name="candidate[answers][2]" value="Yes" required /> Yes</label><label><input type="radio" name="candidate[answers][2]" value="No" /> No</label></fieldset>
+    <div><label for="candidate_answers_3">What are your salary expectations for this position?<span class="sr-only">Required</span></label><input type="number" id="candidate_answers_3" name="candidate[answers][3]" required /></div>
+    <div><label for="candidate_first_name">First name<span class="sr-only">Required</span></label><input type="text" id="candidate_first_name" name="candidate[first_name]" autocomplete="given-name" required /></div>
+    <div><label for="candidate_last_name">Last name<span class="sr-only">Required</span></label><input type="text" id="candidate_last_name" name="candidate[last_name]" autocomplete="family-name" required /></div>
+    <div><label for="candidate_email">Email<span class="sr-only">Required</span></label><input type="email" id="candidate_email" name="candidate[email]" autocomplete="email" required /></div>
+    <div><label for="candidate_phone">Phone<span class="sr-only">Required</span></label><input type="tel" id="candidate_phone" name="candidate[phone]" autocomplete="tel" required /></div>
+    <div><label for="candidate_resume">Upload CV<span class="sr-only">Required</span></label><input type="file" id="candidate_resume" name="candidate[resume]" /></div>
+    <div><label for="candidate_cover_letter">Cover letter<span class="sr-only">Required</span></label><textarea id="candidate_cover_letter" name="candidate[cover_letter]"></textarea></div>
+    <div><label><input type="checkbox" name="candidate[consent_given]" /> <span class="sr-only">Required.</span>By submitting this application, I agree that I have read the Privacy Policy and confirm that Initech may store my personal details.</label></div>
+    <div><label><input type="checkbox" name="candidate[future_jobs_consent]" /> Yes, Initech can contact me directly about specific future job opportunities.</label></div>
+    <button type="submit">Submit application</button>
+  </form>
+  <script src="/mock.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "types": ["node", "chrome", "vite/client"]
+  },
+  "include": [
+    "packages/*/src/**/*.ts",
+    "packages/*/test/**/*.ts",
+    "apps/api/src/**/*.ts",
+    "apps/api/test/**/*.ts",
+    "apps/web/src/**/*.ts",
+    "apps/web/src/**/*.tsx",
+    "apps/extension/src/**/*.ts",
+    "apps/extension/src/**/*.tsx",
+    "e2e/**/*.ts",
+    "scripts/**/*.ts"
+  ]
+}

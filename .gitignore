@@ -1,0 +1,50 @@
+# ---- dependencies
+node_modules/
+
+# ---- build output
+dist/
+*.tsbuildinfo
+.vite/
+# packaged extension (npm run package:extension) and Chrome packing artifacts
+release/
+*.crx
+*.pem
+
+# ---- local data — contains real resumes, profiles and saved answers; never commit
+data/
+uploads/
+*.db
+*.sqlite
+
+# ---- secrets and local configuration
+.env
+.env.*
+!.env.example
+*.key
+.claude/settings.local.json
+
+# ---- tests
+e2e/.data/
+e2e/report/
+test-results/
+playwright-report/
+blob-report/
+coverage/
+
+# ---- scratch space (experiments, debug scripts, local test credentials)
+.spike/
+
+# ---- logs and caches
+*.log
+npm-debug.log*
+.cache/
+.eslintcache
+
+# ---- editors and OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini

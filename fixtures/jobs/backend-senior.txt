@@ -1,0 +1,30 @@
+Senior Backend Engineer
+Globex Payments — Seattle, WA (Hybrid)
+
+About the role
+Globex Payments is building the next generation of payment infrastructure for online merchants. We're looking for a Senior Backend Engineer to join our Platform team and help us scale our payments platform.
+
+Responsibilities
+- Design, build, and operate scalable backend services and REST APIs in Python
+- Own services end-to-end on AWS, from design through deployment and monitoring
+- Improve the reliability and performance of payment processing systems
+- Build CI/CD pipelines and automate infrastructure with Terraform
+- Deploy and operate containerized workloads on Kubernetes
+- Mentor engineers and lead code reviews
+- Collaborate with product managers and cross-functional partners to define requirements
+
+Requirements
+- 5+ years of professional software engineering experience
+- Strong proficiency in Python
+- Experience with AWS (Lambda, S3, EC2) and Docker
+- Experience with Kubernetes and Terraform
+- Solid understanding of SQL and relational databases such as PostgreSQL
+- Bachelor's degree in Computer Science or a related field, or equivalent practical experience
+
+Nice to have
+- Experience with Kafka or other event streaming platforms
+- Familiarity with Go
+- Background in fintech or payments
+- Experience with observability tools like Datadog or Prometheus
+
+Compensation: $160,000 – $190,000 per year. This is a full-time position.

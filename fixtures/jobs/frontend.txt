@@ -1,0 +1,16 @@
+Frontend Engineer (React)
+Initech — Remote (US)
+
+We are hiring a Frontend Engineer to build delightful user experiences for our analytics SaaS product.
+
+What you'll do:
+• Build responsive, accessible UI components with React and TypeScript
+• Collaborate with designers to translate Figma mockups into production code
+• Improve web performance and Core Web Vitals
+• Write unit tests with Jest and end-to-end tests with Cypress
+
+What we're looking for:
+• 3+ years of experience building web applications with React
+• Strong JavaScript and TypeScript skills, plus HTML and CSS
+• Experience with GraphQL is a plus
+• Excellent written and verbal communication skills

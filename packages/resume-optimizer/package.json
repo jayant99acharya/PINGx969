@@ -1,0 +1,20 @@
+{
+  "name": "@pingx969/resume-optimizer",
+  "version": "0.1.0",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@pingx969/shared": "*",
+    "@pingx969/job-parser": "*",
+    "zod": "^4.6.5",
+    "@pingx969/profile": "*",
+    "@pingx969/resume-parser": "*",
+    "@anthropic-ai/sdk": "^0.131.0"
+  }
+}

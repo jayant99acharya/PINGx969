@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Platform Engineer at Initech</title>
+  <link rel="stylesheet" href="/mock.css" />
+</head>
+<body>
+  <!-- Modelled on <company>.breezy.hr/p/<id>-<slug>/apply (inspected live): plain labelled inputs, an SMS consent
+       checkbox under the phone field, and "Desired Salary" split into currency, amount and period. -->
+  <h1>Platform Engineer</h1>
+  <form id="breezy-form" class="breezy-portal">
+    <div><label for="name">Full Name</label><input id="name" name="name" type="text" /></div>
+    <div><label for="email_address">Email Address</label><input id="email_address" name="email_address" type="email" /></div>
+    <div><label for="phone_number">Phone Number</label><input id="phone_number" name="phone_number" type="text" /></div>
+    <div><label><input type="checkbox" name="sms_opt_in" /> By providing your phone number you agree to receive informational text messages from Initech.</label></div>
+    <div><label for="address">Address</label><input id="address" name="address" type="text" /></div>
+    <div><label for="salary_currency">Desired Salary</label>
+      <select id="salary_currency" name="desired_salary_currency"><option value="USD" selected>US Dollar ($)</option><option value="EUR">Euro (€)</option></select>
+      <input id="salary" name="desired_salary" type="text" aria-label="Desired Salary" />
+      <select name="desired_salary_period" aria-label="Desired Salary"><option>Hourly</option><option selected>Yearly</option></select></div>
+    <div><label for="summary">Experience Summary</label><textarea id="summary" name="summary"></textarea></div>
+    <div><label for="cover_letter">Cover Letter</label><textarea id="cover_letter" name="cover_letter"></textarea></div>
+    <div><label for="resume">Resume</label><input id="resume" name="resume" type="file" /></div>
+    <button type="submit">Submit Application</button>
+  </form>
+  <script src="/mock.js"></script>
+</body>
+</html>

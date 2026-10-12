@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Backend Engineer @ Hooli</title>
+  <link rel="stylesheet" href="/mock.css" />
+  <link rel="stylesheet" href="/ats/ats.css" />
+</head>
+<body>
+  <!-- Modelled on jobs.ashbyhq.com/<org>/<id>/application (inspected live): _systemfield_* names, UUID-named custom
+       fields, Yes/No questions as <button aria-pressed data-option> pairs over a hidden checkbox. -->
+  <h1 class="ashby-job-posting-heading">Backend Engineer</h1>
+  <form class="ashby-application-form-container" id="ashby-form">
+    <div class="_fieldEntry" data-field-path="_systemfield_name"><label class="ashby-application-form-question-title" for="_systemfield_name">Legal Name<span class="required">*</span></label><input id="_systemfield_name" name="_systemfield_name" type="text" class="ashby-application-form-text-input" required /></div>
+    <div class="_fieldEntry" data-field-path="_systemfield_email"><label class="ashby-application-form-question-title" for="_systemfield_email">Email<span class="required">*</span></label><input id="_systemfield_email" name="_systemfield_email" type="email" required /></div>
+    <div class="_fieldEntry" data-field-path="94b8da34"><label class="ashby-application-form-question-title" for="94b8da34-0fcd">Phone</label><input id="94b8da34-0fcd" name="94b8da34-0fcd" type="tel" /></div>
+    <fieldset class="_fieldEntry" data-field-path="communicationConsent"><legend>Text message consent</legend>
+      <label><input type="radio" name="communicationConsent" value="yes" /> Yes - I consent to receiving text messages</label>
+      <label><input type="radio" name="communicationConsent" value="no" /> No - I do not consent to receiving text messages</label>
+    </fieldset>
+    <div class="_fieldEntry" data-field-path="_systemfield_location"><label class="ashby-application-form-question-title" id="loc-label">Location<span class="required">*</span></label>
+      <div class="select__control" style="display:block"><input type="text" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="loc-label" placeholder="Start typing..." autocomplete="off" id="ashby-location" /></div></div>
+    <div class="_fieldEntry" data-field-path="_systemfield_resume"><label class="ashby-application-form-question-title" for="_systemfield_resume">Resume<span class="required">*</span></label><input id="_systemfield_resume" type="file" /></div>
+    <div class="_fieldEntry" data-field-path="31887cc5"><label class="ashby-application-form-question-title" for="31887cc5-e576">LinkedIn Profile</label><input id="31887cc5-e576" name="31887cc5-e576" type="text" /></div>
+
+    <div class="_fieldEntry" data-field-path="707824e4"><label class="ashby-application-form-question-title" for="707824e4-4870">Are you legally authorized to work in the United States?<span class="required">*</span></label>
+      <div class="toggle-row"><button type="button" aria-pressed="false" data-option="yes">Yes</button><button type="button" aria-pressed="false" data-option="no">No</button><input type="checkbox" tabindex="-1" name="707824e4-4870" /></div></div>
+    <div class="_fieldEntry" data-field-path="b2ed64ad"><label class="ashby-application-form-question-title" for="b2ed64ad-b93c">Will you now or in the future require visa sponsorship?<span class="required">*</span></label>
+      <div class="toggle-row"><button type="button" aria-pressed="false" data-option="yes">Yes</button><button type="button" aria-pressed="false" data-option="no">No</button><input type="checkbox" tabindex="-1" name="b2ed64ad-b93c" /></div></div>
+    <div class="_fieldEntry" data-field-path="c3aa01"><label class="ashby-application-form-question-title" for="c3aa01-11">Can you work from our New York office 4-5 days a week?<span class="required">*</span></label>
+      <div class="toggle-row"><button type="button" aria-pressed="false" data-option="yes">Yes</button><button type="button" aria-pressed="false" data-option="no">No</button><input type="checkbox" tabindex="-1" name="c3aa01-11" /></div></div>
+    <div class="_fieldEntry" data-field-path="d4bb02"><label class="ashby-application-form-question-title" for="d4bb02-22">What is the most interesting system you have scaled?</label><textarea id="d4bb02-22" name="d4bb02-22"></textarea></div>
+    <button type="submit" class="ashby-application-form-submit-button">Submit Application</button>
+  </form>
+  <script>
+    // Yes/No toggles: React state lives on the buttons; the checkbox only mirrors "yes".
+    document.querySelectorAll('.toggle-row').forEach((row) => {
+      const box = row.querySelector('input[type="checkbox"]');
+      row.querySelectorAll('button').forEach((b) =>
+        b.addEventListener('click', () => {
+          row.querySelectorAll('button').forEach((o) => o.setAttribute('aria-pressed', String(o === b)));
+          box.checked = b.dataset.option === 'yes';
+        }),
+      );
+    });
+    // Location autocomplete: suggestions arrive asynchronously after typing.
+    const loc = document.getElementById('ashby-location');
+    let menu = null;
+    const places = ['San Francisco, California, United States', 'South San Francisco, California, United States', 'New York, New York, United States'];
+    loc.addEventListener('input', () => {
+      setTimeout(() => {
+        menu?.remove();
+        const q = loc.value.trim().toLowerCase();
+        if (!q) return;
+        menu = document.createElement('div');
+        menu.setAttribute('role', 'listbox');
+        menu.id = 'ashby-location-listbox';
+        menu.className = 'select__menu';
+        places.filter((p) => p.toLowerCase().includes(q.split(',')[0])).forEach((p) => {
+          const o = document.createElement('div');
+          o.setAttribute('role', 'option');
+          o.textContent = p;
+          o.addEventListener('click', () => {
+            loc.value = p;
+            menu.remove();
+            menu = null;
+            loc.setAttribute('aria-expanded', 'false');
+          });
+          menu.append(o);
+        });
+        loc.parentElement.style.position = 'relative';
+        loc.parentElement.append(menu);
+        loc.setAttribute('aria-expanded', 'true');
+        loc.setAttribute('aria-controls', menu.id);
+      }, 120);
+    });
+  </script>
+  <script src="/mock.js"></script>
+</body>
+</html>

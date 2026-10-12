@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Apply - Platform Engineer</title>
+  <link rel="stylesheet" href="/mock.css" />
+  <style>
+    [role=combobox] { border: 1px solid #bbb; border-radius: 6px; padding: 8px; cursor: pointer; }
+    .rip-menu { list-style: none; margin: 2px 0; padding: 4px 0; border: 1px solid #ccc; border-radius: 6px; background: #fff; }
+    .rip-radio { display: inline-flex; gap: 6px; margin-right: 16px; cursor: pointer; }
+    .rip-radio .dot { width: 14px; height: 14px; border: 2px solid #555; border-radius: 50%; }
+    .rip-radio[aria-checked="true"] .dot { background: #7a2e8e; border-color: #7a2e8e; }
+  </style>
+</head>
+<body>
+  <!-- Modelled on ats.rippling.com/<company>/jobs/<id>/apply (inspected live): labelled inputs, and custom questions
+       as div[role=combobox][aria-label="Select"] whose question text sits several wrappers up (a sibling of the
+       question's container), plus an SMS opt-in as a role=radio group with true/false values. -->
+  <form id="rip-form">
+    <div><label for="firstName">First name</label><input id="firstName" name="firstName" type="text" /></div>
+    <div><label for="lastName">Last name</label><input id="lastName" name="lastName" type="text" /></div>
+    <div><label for="email">Email</label><input id="email" name="email" type="text" /></div>
+    <div><label for="phone">Phone number</label><input id="phone" name="phoneNumber" type="text" /></div>
+    <div><label for="linkedin">LinkedIn Link</label><input id="linkedin" name="linkedin" type="text" /></div>
+    <div class="question">
+      <div class="q-title">Are you legally authorized to work in the United States?</div>
+      <div><div data-testid="customQuestions.q1"><div><div data-testid="select-controller"><div>
+        <div id="field-63" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-label="Select" aria-required="true" tabindex="0" data-options='["Yes","No"]'><p>Select</p></div>
+      </div></div></div></div></div>
+    </div>
+    <div class="question">
+      <div class="q-title">Will you now or in the future require sponsorship for employment visa status?</div>
+      <div><div data-testid="customQuestions.q2"><div><div data-testid="select-controller"><div>
+        <div id="field-69" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-label="Select" aria-required="true" tabindex="0" data-options='["Yes","No"]'><p>Select</p></div>
+      </div></div></div></div></div>
+    </div>
+    <div class="question">
+      <div class="q-title">This is an in-office role. Can you commute to New York?</div>
+      <div><div data-testid="customQuestions.q3"><div><div data-testid="select-controller"><div>
+        <div id="field-75" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-label="Select" aria-required="true" tabindex="0" data-options='["Yes","No"]'><p>Select</p></div>
+      </div></div></div></div></div>
+    </div>
+    <div class="question">
+      <div id="sms-label">Check Yes or No to indicate your agreement to receive text messages from Initech.</div>
+      <div role="radiogroup" aria-labelledby="sms-label">
+        <div class="rip-radio" role="radio" aria-checked="false" aria-label="true" tabindex="0"><span class="dot"></span>Yes</div>
+        <div class="rip-radio" role="radio" aria-checked="false" aria-label="false" tabindex="-1"><span class="dot"></span>No</div>
+      </div>
+    </div>
+    <button type="submit">Submit application</button>
+  </form>
+  <script>
+    document.querySelectorAll('[role=combobox]').forEach((c) => {
+      let menu = null;
+      c.addEventListener('click', () => {
+        if (menu) return menu.remove(), (menu = null);
+        menu = document.createElement('ul');
+        menu.className = 'rip-menu';
+        menu.setAttribute('role', 'listbox');
+        menu.id = `${c.id}-listbox`;
+        for (const o of JSON.parse(c.dataset.options)) {
+          const li = document.createElement('li');
+          li.setAttribute('role', 'option');
+          li.textContent = o;
+          li.addEventListener('click', () => {
+            c.querySelector('p').textContent = o;
+            menu.remove();
+            menu = null;
+          });
+          menu.append(li);
+        }
+        c.setAttribute('aria-controls', menu.id);
+        c.after(menu);
+      });
+    });
+    document.querySelectorAll('[role=radiogroup]').forEach((g) =>
+      g.querySelectorAll('[role=radio]').forEach((r) => r.addEventListener('click', () => g.querySelectorAll('[role=radio]').forEach((o) => o.setAttribute('aria-checked', String(o === r))))),
+    );
+    document.getElementById('rip-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      location.href = '/submitted.html?from=rippling';
+    });
+  </script>
+</body>
+</html>

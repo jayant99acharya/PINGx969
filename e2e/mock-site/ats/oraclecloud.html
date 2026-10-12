@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Initech Candidate Experience page</title>
+  <link rel="stylesheet" href="/mock.css" />
+  <style>
+    .input-row { margin: 12px 0; }
+    .input-row__label { display: block; font-weight: 600; margin-bottom: 4px; }
+    .input-row__control { width: 100%; padding: 8px; border: 1px solid #bbb; border-radius: 18px; box-sizing: border-box; }
+    .honey-pot { position: absolute; left: -9999px; }
+    .oj-listbox-drop { position: absolute; background: #fff; border: 1px solid #ccc; border-radius: 6px; list-style: none; margin: 0; padding: 4px 0; min-width: 240px; z-index: 20; box-shadow: 0 6px 18px rgba(0,0,0,.15); }
+    .oj-listbox-drop li { padding: 8px 10px; cursor: pointer; }
+    .cx-select-pills-container { display: flex; gap: 8px; }
+    .cx-select-pill-section { margin-top: 0; background: #fff; color: #222; border: 1px solid #999; border-radius: 16px; }
+    .cx-select-pill-section[aria-pressed="true"] { background: #8b4513; color: #fff; }
+    .apply-flow-block { border-top: 1px solid #ddd; padding-top: 8px; margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <!-- Modelled on <pod>.fa.<region>.oraclecloud.com/hcmUI/CandidateExperience/.../job/<id>/apply (Oracle Recruiting
+       Cloud). Step 1 was inspected live: an email field, a visible-but-offscreen honeypot and a terms checkbox.
+       The live flow then asks for a one-time code; this replica goes straight to the application, whose markup
+       follows Oracle's form-builder: div.input-row > label.input-row__label + input.input-row__control, Oracle
+       JET read-only comboboxes with a body-level listbox, pill buttons for Yes/No questions, and an
+       E-Signature section that must never be filled automatically. -->
+  <div class="apply-flow-dialog__form" id="step-email">
+    <h2>Enter your email address.</h2>
+    <div class="input-row input-row--text"><label class="input-row__label input-row__label--required" for="primary-email-0"><span id="labelText-primary-email-0">Email Address</span></label>
+      <div class="input-row__control-container"><input class="input-row__control" id="primary-email-0" name="primary-email" type="email" autocomplete="email" aria-required="true" /></div></div>
+    <div class="input-row input-row--text honey-pot"><label class="input-row__label" for="honey-pot-1">honeypot</label><input class="input-row__control" id="honey-pot-1" name="honey-pot" type="text" /></div>
+    <div class="input-row input-row--checkbox"><input type="checkbox" id="legal-disclaimer-checkbox" /><label for="legal-disclaimer-checkbox" style="display:inline">I agree with the terms and conditions</label></div>
+    <button type="button" id="next">Next</button>
+  </div>
+
+  <template id="apply-flow">
+    <div class="apply-flow">
+      <h1 class="apply-flow-header__title">Platform Engineer</h1>
+      <form id="apply-form">
+        <section class="apply-flow-block"><h2 class="apply-flow-block__title">Contact Information</h2>
+          <div class="input-row"><label class="input-row__label" for="lastName-1">Last Name</label><input class="input-row__control" id="lastName-1" name="lastName" type="text" aria-required="true" /></div>
+          <div class="input-row"><label class="input-row__label" for="firstName-2">First Name</label><input class="input-row__control" id="firstName-2" name="firstName" type="text" aria-required="true" /></div>
+          <div class="input-row"><label class="input-row__label" for="knownAs-3">Preferred Name</label><input class="input-row__control" id="knownAs-3" name="knownAs" type="text" /></div>
+          <div class="input-row"><label class="input-row__label" id="phoneCode-label" for="phoneCode-4">Country Code</label><input class="input-row__control oj-combobox-input" id="phoneCode-4" role="combobox" readonly aria-haspopup="listbox" aria-expanded="false" aria-labelledby="phoneCode-label" data-options='["India (+91)","United Kingdom (+44)","United States (+1)"]' value="" /></div>
+          <div class="input-row"><label class="input-row__label" for="phone-5">Phone Number</label><input class="input-row__control" id="phone-5" name="phoneNumber" type="tel" /></div>
+        </section>
+        <section class="apply-flow-block"><h2 class="apply-flow-block__title">Address</h2>
+          <div class="input-row"><label class="input-row__label" for="addr-6">Address Line 1</label><input class="input-row__control" id="addr-6" name="addressLine1" type="text" /></div>
+          <div class="input-row"><label class="input-row__label" for="city-7">City</label><input class="input-row__control" id="city-7" name="city" type="text" role="combobox" aria-haspopup="listbox" aria-expanded="false" autocomplete="off" /></div>
+          <div class="input-row"><label class="input-row__label" id="state-label" for="state-8">State</label><input class="input-row__control oj-combobox-input" id="state-8" role="combobox" readonly aria-haspopup="listbox" aria-expanded="false" aria-labelledby="state-label" data-options='["Arizona","California","New York","Texas"]' value="" /></div>
+          <div class="input-row"><label class="input-row__label" for="zip-9">ZIP Code</label><input class="input-row__control" id="zip-9" name="postalCode" type="text" /></div>
+        </section>
+        <section class="apply-flow-block"><h2 class="apply-flow-block__title">Supporting Documents and URLs</h2>
+          <div class="input-row"><label class="input-row__label" for="resume-10">Upload Resume</label><input id="resume-10" type="file" class="file-upload__input" /></div>
+          <div class="input-row"><label class="input-row__label" for="link-11">LinkedIn Profile URL</label><input class="input-row__control" id="link-11" name="linkedin" type="text" /></div>
+        </section>
+        <section class="apply-flow-block"><h2 class="apply-flow-block__title">Application Questions</h2>
+          <div class="input-row"><span class="input-row__label" id="q1-label">Are you legally authorized to work in the United States?</span>
+            <div class="cx-select-pills-container" role="group" aria-labelledby="q1-label"><button type="button" class="cx-select-pill-section" aria-pressed="false">Yes</button><button type="button" class="cx-select-pill-section" aria-pressed="false">No</button></div></div>
+          <div class="input-row"><span class="input-row__label" id="q2-label">Will you now or in the future require sponsorship for employment visa status?</span>
+            <div class="cx-select-pills-container" role="group" aria-labelledby="q2-label"><button type="button" class="cx-select-pill-section" aria-pressed="false">Yes</button><button type="button" class="cx-select-pill-section" aria-pressed="false">No</button></div></div>
+          <div class="input-row"><span class="input-row__label" id="q3-label">Have you ever been employed by Initech or its subsidiaries?</span>
+            <div class="cx-select-pills-container" role="group" aria-labelledby="q3-label"><button type="button" class="cx-select-pill-section" aria-pressed="false">Yes</button><button type="button" class="cx-select-pill-section" aria-pressed="false">No</button></div></div>
+        </section>
+        <section class="apply-flow-block"><h2 class="apply-flow-block__title">E-Signature</h2>
+          <p>By typing your name below you certify that the information provided is true and complete.</p>
+          <div class="input-row"><label class="input-row__label" for="esign-12">Full Name</label><input class="input-row__control" id="esign-12" name="fullName" type="text" /></div>
+        </section>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </template>
+
+  <script>
+    const mount = (root) => {
+      // Oracle JET read-only combobox: clicking opens a listbox appended to <body>.
+      root.querySelectorAll('input[role=combobox][readonly]').forEach((input) => {
+        let drop = null;
+        const close = () => {
+          drop?.remove();
+          drop = null;
+          input.setAttribute('aria-expanded', 'false');
+        };
+        input.addEventListener('click', () => {
+          if (drop) return close();
+          drop = document.createElement('ul');
+          drop.className = 'oj-listbox-drop';
+          drop.setAttribute('role', 'listbox');
+          drop.id = `${input.id}-listbox`;
+          for (const o of JSON.parse(input.dataset.options)) {
+            const li = document.createElement('li');
+            li.setAttribute('role', 'option');
+            li.className = 'oj-listbox-result';
+            li.textContent = o;
+            li.addEventListener('click', () => {
+              input.value = o;
+              close();
+            });
+            drop.append(li);
+          }
+          const r = input.getBoundingClientRect();
+          drop.style.left = `${r.left + scrollX}px`;
+          drop.style.top = `${r.bottom + scrollY}px`;
+          document.body.append(drop);
+          input.setAttribute('aria-expanded', 'true');
+          input.setAttribute('aria-controls', drop.id);
+        });
+      });
+      // City: free-text with asynchronous suggestions.
+      const city = root.querySelector('#city-7');
+      if (city) {
+        let list = null;
+        city.addEventListener('input', () =>
+          setTimeout(() => {
+            list?.remove();
+            const q = city.value.trim().toLowerCase();
+            const hits = ['San Francisco, CA', 'San Diego, CA', 'Austin, TX'].filter((c) => q && c.toLowerCase().startsWith(q.slice(0, 5)));
+            if (!hits.length) return;
+            list = document.createElement('ul');
+            list.className = 'oj-listbox-drop';
+            list.setAttribute('role', 'listbox');
+            list.id = 'city-listbox';
+            for (const h of hits) {
+              const li = document.createElement('li');
+              li.setAttribute('role', 'option');
+              li.textContent = h;
+              li.addEventListener('click', () => {
+                city.value = h;
+                list.remove();
+              });
+              list.append(li);
+            }
+            city.parentElement.style.position = 'relative';
+            city.parentElement.append(list);
+            city.setAttribute('aria-controls', 'city-listbox');
+          }, 120),
+        );
+      }
+      root.querySelectorAll('.cx-select-pills-container').forEach((g) =>
+        g.querySelectorAll('button').forEach((b) => b.addEventListener('click', () => g.querySelectorAll('button').forEach((o) => o.setAttribute('aria-pressed', String(o === b))))),
+      );
+      root.querySelector('#apply-form')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        location.href = '/submitted.html?from=oraclecloud';
+      });
+    };
+    document.getElementById('next').addEventListener('click', () => {
+      // (live: a one-time code step comes here)
+      const step = document.getElementById('step-email');
+      step.replaceWith(document.getElementById('apply-flow').content.cloneNode(true));
+      mount(document);
+    });
+  </script>
+</body>
+</html>

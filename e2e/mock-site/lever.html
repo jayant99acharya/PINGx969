@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Initech - Platform Engineer</title>
+  <link rel="stylesheet" href="/mock.css" />
+</head>
+<body>
+  <div class="main-header-logo"><img alt="Initech" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" /></div>
+  <div class="posting-headline"><h2>Platform Engineer</h2><div class="location">Remote — US</div></div>
+  <div class="section page-centered">
+    <p>Initech builds analytics infrastructure. Python, AWS and Kubernetes experience is a plus.</p>
+  </div>
+  <form class="application-form" method="post" action="/submitted.html">
+    <h4>Submit your application</h4>
+    <ul>
+      <li class="application-question"><div class="application-label">Resume/CV ✱</div><div class="application-field"><input type="file" name="resume" id="resume-upload-input" /></div></li>
+      <li class="application-question"><label><div class="application-label">Full name ✱</div><div class="application-field"><input type="text" name="name" required /></div></label></li>
+      <li class="application-question"><label><div class="application-label">Email ✱</div><div class="application-field"><input type="email" name="email" required /></div></label></li>
+      <li class="application-question"><label><div class="application-label">Phone</div><div class="application-field"><input type="text" name="phone" /></div></label></li>
+      <li class="application-question"><label><div class="application-label">Current company</div><div class="application-field"><input type="text" name="org" /></div></label></li>
+    </ul>
+    <h4>Links</h4>
+    <ul>
+      <li class="application-question"><label><div class="application-label">LinkedIn URL</div><div class="application-field"><input type="text" name="urls[LinkedIn]" /></div></label></li>
+      <li class="application-question"><label><div class="application-label">GitHub URL</div><div class="application-field"><input type="text" name="urls[GitHub]" /></div></label></li>
+      <li class="application-question"><label><div class="application-label">Portfolio URL</div><div class="application-field"><input type="text" name="urls[Portfolio]" /></div></label></li>
+    </ul>
+    <h4>Questions</h4>
+    <ul>
+      <li class="application-question custom-question">
+        <div class="application-label">Do you currently have authorization to work in the United States?</div>
+        <div class="application-field">
+          <ul data-qa="multiple-choice">
+            <li><label><input type="radio" name="cards[abc][field0]" value="Yes" /> Yes</label></li>
+            <li><label><input type="radio" name="cards[abc][field0]" value="No" /> No</label></li>
+          </ul>
+        </div>
+      </li>
+      <li class="application-question custom-question">
+        <div class="application-label">Have you worked in a regulated industry (e.g. finance, healthcare)?</div>
+        <div class="application-field"><textarea name="cards[abc][field1]"></textarea></div>
+      </li>
+      <li class="application-question custom-question">
+        <div class="application-label">Which cloud providers have you used in production?</div>
+        <div class="application-field">
+          <ul data-qa="checkboxes">
+            <li><label><input type="checkbox" name="cards[abc][field2]" value="AWS" /> AWS</label></li>
+            <li><label><input type="checkbox" name="cards[abc][field2]" value="GCP" /> Google Cloud</label></li>
+            <li><label><input type="checkbox" name="cards[abc][field2]" value="Azure" /> Azure</label></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+    <button type="submit" class="template-btn-submit">Submit application</button>
+  </form>
+  <script src="/mock.js"></script>
+</body>
+</html>

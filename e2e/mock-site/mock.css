@@ -1,0 +1,9 @@
+body { font-family: system-ui, sans-serif; max-width: 760px; margin: 32px auto; padding: 0 16px; color: #222; }
+label { display: block; font-weight: 600; margin: 12px 0 4px; }
+input[type=text], input[type=email], input[type=tel], input[type=number], input[type=date], input:not([type]), select, textarea { width: 100%; padding: 8px; border: 1px solid #bbb; border-radius: 6px; box-sizing: border-box; font: inherit; }
+fieldset { border: 1px solid #ddd; border-radius: 8px; margin: 16px 0; padding: 8px 16px; }
+fieldset label, li label { font-weight: 400; }
+ul { list-style: none; padding: 0; }
+button { margin-top: 20px; padding: 10px 18px; border-radius: 6px; border: 0; background: #2d6cdf; color: #fff; font-weight: 600; cursor: pointer; }
+.field, .row { margin-bottom: 8px; }
+.asterisk { color: #c00; }

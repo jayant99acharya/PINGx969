@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Careers | Initech</title>
+  <link rel="stylesheet" href="/mock.css" />
+  <style>body { max-width: 900px; } iframe { width: 100%; height: 1400px; border: 0; }</style>
+</head>
+<body>
+  <!-- Modelled on careers-<company>.icims.com: the whole job/apply experience renders inside a same-origin
+       #icims_content_iframe (…?in_iframe=1); the content script runs in that frame (all_frames). -->
+  <header><strong>Initech Careers</strong> — Returning candidate? <a href="#">Log back in!</a></header>
+  <iframe id="icims_content_iframe" title="Job application" src="/ats/icims-frame.html?in_iframe=1"></iframe>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Initech — Job Application Form</title>
+  <link rel="stylesheet" href="/mock.css" />
+  <link rel="stylesheet" href="/ats/ats.css" />
+  <style>
+    [role=listitem] { border: 1px solid #ddd; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+    [role=heading][aria-level="3"] { font-weight: 600; margin-bottom: 8px; }
+    .gf-dropdown { border: 1px solid #bbb; border-radius: 6px; padding: 8px; cursor: pointer; position: relative; }
+    .gf-dropdown [role=option] { display: none; }
+    .gf-dropdown [role=option][aria-selected="true"] { display: block; padding: 0; background: none; }
+    .gf-dropdown[aria-expanded="true"] [role=option] { display: block; }
+    .gf-submit { display: inline-block; margin-top: 16px; padding: 10px 18px; border-radius: 6px; background: #673ab7; color: #fff; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <!-- Modelled on docs.google.com/forms/.../viewform (inspected live): role=list of role=listitem questions,
+       text inputs labelled via aria-labelledby, div[role=radio][data-value] choices, role=checkbox lists,
+       a div[role=listbox] dropdown, and hidden entry.N inputs that carry the answers. -->
+  <form action="/formResponse" method="POST" id="mG61Hd">
+    <div role="heading" aria-level="1">Initech — Job Application Form</div>
+    <div role="list">
+      <div role="listitem"><div role="heading" aria-level="3" id="i1"><span>Full Name</span><span aria-label="Required question"> *</span></div>
+        <input type="text" aria-labelledby="i1 i2" aria-required="true" autocomplete="off" /><div id="i2" aria-hidden="true"></div><input type="hidden" name="entry.1001" /></div>
+      <div role="listitem"><div role="heading" aria-level="3" id="i3"><span>Email Id</span><span aria-label="Required question"> *</span></div>
+        <input type="email" aria-labelledby="i3" aria-required="true" autocomplete="off" /><input type="hidden" name="entry.1002" /></div>
+      <div role="listitem"><div role="heading" aria-level="3" id="i4"><span>Mobile No</span></div>
+        <input type="text" aria-labelledby="i4" autocomplete="off" /><input type="hidden" name="entry.1003" /></div>
+      <div role="listitem"><div role="heading" aria-level="3" id="i5"><span>Position Applied for</span><span aria-label="Required question"> *</span></div>
+        <input type="text" aria-labelledby="i5" aria-required="true" autocomplete="off" /><input type="hidden" name="entry.1004" /></div>
+      <div role="listitem"><div role="heading" aria-level="3" id="i6"><span>Are you legally authorized to work in the United States?</span><span aria-label="Required question"> *</span></div>
+        <div role="radiogroup" aria-labelledby="i6" aria-required="true">
+          <div class="aria-choice" role="radio" data-value="Yes" aria-label="Yes" aria-checked="false" tabindex="0"><span class="box"></span><span aria-hidden="true">Yes</span></div>
+          <div class="aria-choice" role="radio" data-value="No" aria-label="No" aria-checked="false" tabindex="-1"><span class="box"></span><span aria-hidden="true">No</span></div>
+        </div><input type="hidden" name="entry.1005" /></div>
+      <div role="listitem"><div role="heading" aria-level="3" id="i7"><span>Will you require visa sponsorship?</span><span aria-label="Required question"> *</span></div>
+        <div role="radiogroup" aria-labelledby="i7" aria-required="true">
+          <div class="aria-choice" role="radio" data-value="Yes" aria-label="Yes" aria-checked="false" tabindex="0"><span class="box"></span><span aria-hidden="true">Yes</span></div>
+          <div class="aria-choice" role="radio" data-value="No" aria-label="No" aria-checked="false" tabindex="-1"><span class="box"></span><span aria-hidden="true">No</span></div>
+        </div><input type="hidden" name="entry.1006" /></div>
+      <div role="listitem"><div role="heading" aria-level="3" id="i8"><span>Marital Status</span><span aria-label="Required question"> *</span></div>
+        <div role="radiogroup" aria-labelledby="i8" aria-required="true">
+          <div class="aria-choice" role="radio" data-value="married" aria-label="married" aria-checked="false" tabindex="0"><span class="box"></span><span aria-hidden="true">married</span></div>
+          <div class="aria-choice" role="radio" data-value="unmarried" aria-label="unmarried" aria-checked="false" tabindex="-1"><span class="box"></span><span aria-hidden="true">unmarried</span></div>
+        </div><input type="hidden" name="entry.1007" /></div>
+      <div role="listitem"><div role="heading" aria-level="3" id="i9"><span>Which of these have you used?</span></div>
+        <div role="list" aria-labelledby="i9">
+          <div class="aria-choice" role="checkbox" aria-label="Python" data-answer-value="Python" aria-checked="false" tabindex="0"><span class="box"></span><span aria-hidden="true">Python</span></div>
+          <div class="aria-choice" role="checkbox" aria-label="Go" data-answer-value="Go" aria-checked="false" tabindex="0"><span class="box"></span><span aria-hidden="true">Go</span></div>
+          <div class="aria-choice" role="checkbox" aria-label="AWS" data-answer-value="AWS" aria-checked="false" tabindex="0"><span class="box"></span><span aria-hidden="true">AWS</span></div>
+        </div><input type="hidden" name="entry.1008" /></div>
+      <div role="listitem"><div role="heading" aria-level="3" id="i10"><span>Country of residence</span></div>
+        <div role="listbox" class="gf-dropdown" aria-expanded="false" aria-labelledby="i10" tabindex="0">
+          <div role="option" data-value="" aria-selected="true">Choose</div>
+          <div role="option" data-value="India" aria-selected="false">India</div>
+          <div role="option" data-value="United States" aria-selected="false">United States</div>
+          <div role="option" data-value="United Kingdom" aria-selected="false">United Kingdom</div>
+        </div><input type="hidden" name="entry.1009" /></div>
+      <div role="listitem"><div role="heading" aria-level="3" id="i11"><span>LinkedIn profile URL</span></div>
+        <input type="text" aria-labelledby="i11" autocomplete="off" /><input type="hidden" name="entry.1010" /></div>
+      <div role="listitem"><div role="heading" aria-level="3" id="i12"><span>Date available to start</span></div>
+        <input type="date" aria-labelledby="i12" /><input type="hidden" name="entry.1011" /></div>
+    </div>
+    <div role="button" class="gf-submit" tabindex="0" id="gf-submit"><span>Submit</span></div>
+  </form>
+  <script>
+    // Mirror answers into the hidden entry.N inputs the way Google Forms' JS does.
+    const hiddenOf = (el) => el.closest('[role=listitem]').querySelector('input[type=hidden]');
+    document.querySelectorAll('[role=listitem] input:not([type=hidden])').forEach((i) => i.addEventListener('input', () => (hiddenOf(i).value = i.value)));
+    document.querySelectorAll('[role=radiogroup]').forEach((g) =>
+      g.querySelectorAll('[role=radio]').forEach((r) =>
+        r.addEventListener('click', () => {
+          g.querySelectorAll('[role=radio]').forEach((o) => o.setAttribute('aria-checked', String(o === r)));
+          hiddenOf(g).value = r.dataset.value;
+        }),
+      ),
+    );
+    document.querySelectorAll('[role=checkbox]').forEach((c) =>
+      c.addEventListener('click', () => {
+        c.setAttribute('aria-checked', String(c.getAttribute('aria-checked') !== 'true'));
+        const list = c.closest('[role=list]');
+        hiddenOf(list).value = [...list.querySelectorAll('[role=checkbox][aria-checked=true]')].map((x) => x.dataset.answerValue).join(',');
+      }),
+    );
+    document.querySelectorAll('.gf-dropdown').forEach((dd) => {
+      dd.addEventListener('click', (e) => {
+        const opt = e.target.closest('[role=option]');
+        if (dd.getAttribute('aria-expanded') === 'true' && opt) {
+          dd.querySelectorAll('[role=option]').forEach((o) => o.setAttribute('aria-selected', String(o === opt)));
+          hiddenOf(dd).value = opt.dataset.value;
+          dd.setAttribute('aria-expanded', 'false');
+        } else dd.setAttribute('aria-expanded', 'true');
+      });
+    });
+    document.getElementById('gf-submit').addEventListener('click', () => (location.href = '/submitted.html?from=google-forms'));
+  </script>
+</body>
+</html>

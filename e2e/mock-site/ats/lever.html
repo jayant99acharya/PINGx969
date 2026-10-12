@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Initech - Data Platform Engineer</title>
+  <link rel="stylesheet" href="/mock.css" />
+  <link rel="stylesheet" href="/ats/ats.css" />
+</head>
+<body>
+  <!-- Modelled on jobs.lever.co/<company>/<id>/apply (inspected live): native inputs, "cards[...]" custom questions, consent radios. -->
+  <div class="main-header-logo"><img alt="Initech" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" /></div>
+  <div class="posting-headline"><h2>Data Platform Engineer</h2></div>
+  <form class="application-form" id="application-form" method="post" action="/submitted.html">
+    <h4>Submit your application</h4>
+    <ul>
+      <li class="application-question resume"><label><div class="application-label">Resume/CV<span class="required">✱</span></div><div class="application-field"><input class="application-file-input invisible-resume-upload" type="file" name="resume" id="resume-upload-input" data-qa="input-resume" /></div></label></li>
+      <li class="application-question"><label><div class="application-label">Full name<span class="required">✱</span></div><div class="application-field"><input type="text" name="name" data-qa="name-input" required /></div></label></li>
+      <li class="application-question"><label><div class="application-label">Email<span class="required">✱</span></div><div class="application-field"><input type="email" name="email" data-qa="email-input" required /></div></label></li>
+      <li class="application-question"><label><div class="application-label">Phone</div><div class="application-field"><input type="text" name="phone" data-qa="phone-input" /></div></label></li>
+      <li class="application-question"><label><div class="application-label">Current location<span class="required">✱</span></div><div class="application-field"><input type="text" name="location" id="location-input" class="location-input" data-qa="location-input" required /><input type="hidden" name="selectedLocation" id="selected-location" /></div></label></li>
+      <li class="application-question"><label><div class="application-label">Current company</div><div class="application-field"><input type="text" name="org" data-qa="org-input" /></div></label></li>
+    </ul>
+    <h4>Links</h4>
+    <ul>
+      <li class="application-question"><label><div class="application-label">LinkedIn URL</div><div class="application-field"><input type="text" name="urls[LinkedIn]" /></div></label></li>
+      <li class="application-question"><label><div class="application-label">GitHub URL</div><div class="application-field"><input type="text" name="urls[GitHub]" /></div></label></li>
+    </ul>
+    <h4>Additional questions</h4>
+    <ul>
+      <li class="application-question custom-question">
+        <div class="application-label">What languages do you speak fluently?</div>
+        <div class="application-field"><input type="hidden" name="cards[a69a985a][baseTemplate]" value="x" />
+          <ul data-qa="checkboxes">
+            <li><label><input type="checkbox" name="cards[a69a985a][field0]" value="English (ENG)" /> English (ENG)</label></li>
+            <li><label><input type="checkbox" name="cards[a69a985a][field0]" value="Spanish (SPA)" /> Spanish (SPA)</label></li>
+            <li><label><input type="checkbox" name="cards[a69a985a][field0]" value="Hindi (HIN)" /> Hindi (HIN)</label></li>
+          </ul>
+        </div>
+      </li>
+      <li class="application-question custom-question">
+        <div class="application-label">Are you legally authorized to work in the United States?<span class="required">✱</span></div>
+        <div class="application-field"><ul data-qa="multiple-choice">
+          <li><label><input type="radio" name="cards[1c719ca9][field0]" value="Yes" /> Yes</label></li>
+          <li><label><input type="radio" name="cards[1c719ca9][field0]" value="No" /> No</label></li>
+        </ul></div>
+      </li>
+      <li class="application-question custom-question">
+        <div class="application-label">Will you now or in the future require visa sponsorship?<span class="required">✱</span></div>
+        <div class="application-field"><ul data-qa="multiple-choice">
+          <li><label><input type="radio" name="cards[1c719ca9][field1]" value="Yes" /> Yes</label></li>
+          <li><label><input type="radio" name="cards[1c719ca9][field1]" value="No" /> No</label></li>
+        </ul></div>
+      </li>
+      <li class="application-question custom-question">
+        <div class="application-label">Describe a data pipeline you are proud of.</div>
+        <div class="application-field"><textarea class="card-field-input" name="cards[ce72d538][field0]" placeholder="Type your response"></textarea></div>
+      </li>
+      <li class="application-question custom-question">
+        <div class="application-label">Initech may process my personal data to evaluate my application.<span class="required">✱</span></div>
+        <div class="application-field"><ul data-qa="multiple-choice">
+          <li><label><input type="radio" name="cards[73796cde][field0]" value="Yes, I consent" /> Yes, I consent</label></li>
+          <li><label><input type="radio" name="cards[73796cde][field0]" value="No, I do not consent" /> No, I do not consent</label></li>
+        </ul></div>
+      </li>
+    </ul>
+    <div class="application-additional"><label for="additional-information">Additional information</label><textarea name="comments" id="additional-information"></textarea></div>
+    <label><input type="checkbox" name="consent[marketing]" /> Initech has my consent to contact me about future job opportunities.</label>
+    <button type="submit" data-qa="btn-submit">Submit application</button>
+  </form>
+  <script src="/mock.js"></script>
+</body>
+</html>

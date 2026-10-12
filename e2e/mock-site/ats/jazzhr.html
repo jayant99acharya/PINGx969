@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Senior Software Engineer - Initech - Career Page</title>
+  <link rel="stylesheet" href="/mock.css" />
+</head>
+<body>
+  <!-- Modelled on <company>.applytojob.com/apply/<id>/<title> (inspected live): resumator-* names, placeholder-only
+       address parts, questionnaire checkboxes with one name per option (resumator-checkbox-<q>-<n>). -->
+  <h1 id="resumator-job-title">Senior Software Engineer</h1>
+  <form id="resumator-application-form" method="post" action="/submitted.html">
+    <input type="hidden" name="resumator-job-value" value="job_123" />
+    <div class="form-group"><label for="resumator-firstname-value">First Name<span class="asterisk">*</span></label><input type="text" name="resumator-firstname-value" id="resumator-firstname-value" class="form-control" required /></div>
+    <div class="form-group"><label for="resumator-lastname-value">Last Name<span class="asterisk">*</span></label><input type="text" name="resumator-lastname-value" id="resumator-lastname-value" class="form-control" required /></div>
+    <div class="form-group"><label for="resumator-email-value">Email Address<span class="asterisk">*</span></label><input type="email" name="resumator-email-value" id="resumator-email-value" class="form-control" required /></div>
+    <div class="form-group"><label for="resumator-phone-value">Phone<span class="asterisk">*</span></label><input type="tel" name="resumator-phone-value" id="resumator-phone-value" class="form-control" required /></div>
+    <div class="form-group"><label for="resumator-address-value">Address<span class="asterisk">*</span></label>
+      <input type="text" name="resumator-address-value" id="resumator-address-value" class="form-control" required />
+      <input type="text" name="resumator-city-value" id="resumator-city-value" class="form-control" placeholder="City" />
+      <input type="text" name="resumator-state-value" id="resumator-state-value" class="form-control" placeholder="State/Province" />
+      <input type="text" name="resumator-postal-value" id="resumator-postal-value" class="form-control" placeholder="Postal" />
+    </div>
+    <div class="form-group"><label for="resumator-resume-value">Resume<span class="asterisk">*</span></label><input type="file" name="resumator-resume-value" id="resumator-resume-value" /></div>
+    <div class="form-group"><label for="resumator-coverletter-value">Cover Letter</label><textarea name="resumator-coverletter-value" id="resumator-coverletter-value" class="form-control resumator-field"></textarea></div>
+    <div class="form-group"><label for="resumator-citizen-value">What's your citizenship / employment eligibility <span class="asterisk">*</span></label>
+      <select name="resumator-citizen-value" id="resumator-citizen-value" class="form-control"><option value="">- Select One -</option><option value="1">U.S. Citizen or Permanent Resident</option><option value="2">Authorized to work in the U.S. (no sponsorship needed)</option><option value="3">Require sponsorship</option></select></div>
+    <div class="form-group"><label for="resumator-linkedin-value">LinkedIn Profile URL:</label><input type="text" name="resumator-linkedin-value" id="resumator-linkedin-value" class="form-control" /></div>
+    <div class="form-group"><label for="resumator-salary-value">Desired salary</label><input type="text" name="resumator-salary-value" id="resumator-salary-value" class="form-control" /></div>
+    <div class="form-group"><label for="resumator-questionnaire-q3008054">How many years of professional software engineering experience do you have? <span class="asterisk">*</span></label>
+      <select name="resumator-questionnaire[3008054]" id="resumator-questionnaire-q3008054" class="form-control resumator-select-question"><option value="">- Select One -</option><option>0-2</option><option>3-5</option><option>6-9</option><option>10+</option></select></div>
+    <div class="form-group"><label>Which of these have you used in production? <span class="asterisk">*</span></label>
+      <input type="hidden" name="resumator-questionnaire[3008058]" id="resumator-questionnaire-q3008058" class="resumator-questionnaire-checkbox-hidden" />
+      <div class="checkbox"><label for="resumator-checkbox-3008058-1"><input type="checkbox" name="resumator-checkbox-3008058-1" id="resumator-checkbox-3008058-1" class="resumator-questionnaire-checkbox" value="AWS" />AWS</label></div>
+      <div class="checkbox"><label for="resumator-checkbox-3008058-2"><input type="checkbox" name="resumator-checkbox-3008058-2" id="resumator-checkbox-3008058-2" class="resumator-questionnaire-checkbox" value="Docker" />Docker</label></div>
+      <div class="checkbox"><label for="resumator-checkbox-3008058-3"><input type="checkbox" name="resumator-checkbox-3008058-3" id="resumator-checkbox-3008058-3" class="resumator-questionnaire-checkbox" value="Kubernetes" />Kubernetes</label></div>
+      <div class="checkbox"><label for="resumator-checkbox-3008058-4"><input type="checkbox" name="resumator-checkbox-3008058-4" id="resumator-checkbox-3008058-4" class="resumator-questionnaire-checkbox" value="GraphQL" />GraphQL</label></div>
+    </div>
+    <div class="form-group"><label for="resumator-questionnaire-q3008062">What are your views on using AI in your work <span class="asterisk">*</span></label><textarea name="resumator-questionnaire[3008062]" id="resumator-questionnaire-q3008062" class="form-control resumator-field"></textarea></div>
+    <h3>Equal Employment Opportunity</h3>
+    <div class="form-group"><label for="resumator-eeo_gender-value">Gender<select name="resumator-eeo_gender-value" id="resumator-eeo_gender-value" class="form-control"><option value="">Decline to answer</option><option value="F">Female</option><option value="M">Male</option></select></label></div>
+    <button type="submit" id="resumator-submit-value">Submit Application</button>
+  </form>
+  <script src="/mock.js"></script>
+</body>
+</html>

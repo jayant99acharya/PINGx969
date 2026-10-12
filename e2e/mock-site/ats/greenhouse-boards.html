@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Job Application for Platform Engineer at Initech</title>
+  <link rel="stylesheet" href="/mock.css" />
+  <link rel="stylesheet" href="/ats/ats.css" />
+</head>
+<body>
+  <!-- Modelled on job-boards.greenhouse.io (2024+ React form): react-select comboboxes for every choice question. -->
+  <div class="job__header"><div class="job__title"><h1 class="section-header">Platform Engineer</h1></div><div class="job__location">Remote — United States</div></div>
+  <div class="job__description"><p>Initech is hiring a Platform Engineer to run Kubernetes, Terraform and Go services on AWS.</p></div>
+  <form id="application-form" class="application--form">
+    <h2>Apply for this job</h2>
+    <div class="field-wrapper"><label id="first_name-label" for="first_name" class="label">First Name<span aria-hidden="true">*</span></label><input id="first_name" class="input input__single-line" type="text" autocomplete="given-name" aria-required="true" /></div>
+    <div class="field-wrapper"><label id="last_name-label" for="last_name" class="label">Last Name<span aria-hidden="true">*</span></label><input id="last_name" class="input input__single-line" type="text" autocomplete="family-name" aria-required="true" /></div>
+    <div class="field-wrapper"><label id="email-label" for="email" class="label">Email<span aria-hidden="true">*</span></label><input id="email" class="input input__single-line" type="text" autocomplete="email" aria-required="true" /></div>
+
+    <div class="select" data-rs-options='["United States","Canada","India","United Kingdom"]'>
+      <label id="country-label" for="country">Country</label>
+      <div class="select__control"><div class="select__value-container"><div class="select__placeholder" id="react-select-country-placeholder">Select...</div><div class="select__input-container"><input class="select__input" id="country" type="text" role="combobox" aria-expanded="false" aria-haspopup="true" aria-autocomplete="list" aria-labelledby="country-label" autocomplete="off" value="" /></div></div></div>
+      <input class="requiredInput" aria-hidden="true" tabindex="-1" value="" style="opacity:0;position:absolute;width:1px" />
+    </div>
+    <div class="field-wrapper"><label for="phone" id="phone-label">Phone</label><input id="phone" class="input input__single-line iti__tel-input" type="tel" autocomplete="off" data-intl-tel-input-id="0" /></div>
+
+    <div class="select" data-rs-options='["San Francisco, California, United States","San Jose, California, United States","Seattle, Washington, United States"]' data-rs-async>
+      <label id="candidate-location-label" for="candidate-location">Location (City)<span aria-hidden="true">*</span></label>
+      <div class="select__control"><div class="select__value-container"><div class="select__placeholder">Start typing...</div><div class="select__input-container"><input class="select__input" id="candidate-location" type="text" role="combobox" aria-expanded="false" aria-haspopup="true" aria-autocomplete="list" aria-labelledby="candidate-location-label" aria-required="true" autocomplete="off" value="" /></div></div></div>
+    </div>
+
+    <div class="file-upload"><div class="file-upload__label" id="upload-label-resume">Resume/CV<span aria-hidden="true">*</span></div><label for="resume" class="button button--secondary">Attach</label><input id="resume" class="visually-hidden" type="file" accept=".pdf,.doc,.docx,.txt,.rtf" /></div>
+    <div class="file-upload"><div class="file-upload__label" id="upload-label-cover_letter">Cover Letter</div><label for="cover_letter" class="button button--secondary">Attach</label><input id="cover_letter" class="visually-hidden" type="file" accept=".pdf,.doc,.docx,.txt,.rtf" /></div>
+
+    <div class="field-wrapper"><label for="question_3670001" id="question_3670001-label">LinkedIn Profile</label><input id="question_3670001" class="input input__single-line" type="text" /></div>
+    <div class="field-wrapper"><label for="question_3670002" id="question_3670002-label">What's the name you'd prefer us to use throughout the interview process?</label><input id="question_3670002" class="input input__single-line" type="text" /></div>
+
+    <div class="select" data-rs-options='["Yes","No"]'>
+      <label id="question_3670003-label" for="question_3670003">Are you legally authorized to work in the United States?<span aria-hidden="true">*</span></label>
+      <div class="select__control"><div class="select__value-container"><div class="select__placeholder">Select...</div><div class="select__input-container"><input class="select__input" id="question_3670003" type="text" role="combobox" aria-expanded="false" aria-haspopup="true" aria-autocomplete="list" aria-labelledby="question_3670003-label" aria-required="true" autocomplete="off" value="" /></div></div></div>
+      <input class="requiredInput" aria-hidden="true" tabindex="-1" value="" style="opacity:0;position:absolute;width:1px" />
+    </div>
+    <div class="select" data-rs-options='["Yes","No"]'>
+      <label id="question_3670004-label" for="question_3670004">Will you now or in the future require sponsorship for employment visa status?<span aria-hidden="true">*</span></label>
+      <div class="select__control"><div class="select__value-container"><div class="select__placeholder">Select...</div><div class="select__input-container"><input class="select__input" id="question_3670004" type="text" role="combobox" aria-expanded="false" aria-haspopup="true" aria-autocomplete="list" aria-labelledby="question_3670004-label" aria-required="true" autocomplete="off" value="" /></div></div></div>
+      <input class="requiredInput" aria-hidden="true" tabindex="-1" value="" style="opacity:0;position:absolute;width:1px" />
+    </div>
+    <div class="select" data-rs-options='["Yes","No"]'>
+      <label id="question_3670005-label" for="question_3670005">Have you previously worked at or consulted for Initech?<span aria-hidden="true">*</span></label>
+      <div class="select__control"><div class="select__value-container"><div class="select__placeholder">Select...</div><div class="select__input-container"><input class="select__input" id="question_3670005" type="text" role="combobox" aria-expanded="false" aria-haspopup="true" aria-autocomplete="list" aria-labelledby="question_3670005-label" aria-required="true" autocomplete="off" value="" /></div></div></div>
+      <input class="requiredInput" aria-hidden="true" tabindex="-1" value="" style="opacity:0;position:absolute;width:1px" />
+    </div>
+    <div class="field-wrapper"><label for="question_3670006" id="question_3670006-label">Why do you want to join Initech's platform team?<span aria-hidden="true">*</span></label><textarea id="question_3670006" class="input" aria-required="true"></textarea></div>
+
+    <h3>Voluntary Self-Identification</h3>
+    <div class="select" data-rs-options='["Male","Female","Decline To Self Identify"]'>
+      <label id="gender-label" for="gender">Gender</label>
+      <div class="select__control"><div class="select__value-container"><div class="select__placeholder">Select...</div><div class="select__input-container"><input class="select__input" id="gender" type="text" role="combobox" aria-expanded="false" aria-haspopup="true" aria-autocomplete="list" aria-labelledby="gender-label" autocomplete="off" value="" /></div></div></div>
+    </div>
+    <div class="select" data-rs-options='["I am a veteran","I am not a protected veteran","I don&#39;t wish to answer"]'>
+      <label id="veteran_status-label" for="veteran_status">Veteran Status</label>
+      <div class="select__control"><div class="select__value-container"><div class="select__placeholder">Select...</div><div class="select__input-container"><input class="select__input" id="veteran_status" type="text" role="combobox" aria-expanded="false" aria-haspopup="true" aria-autocomplete="list" aria-labelledby="veteran_status-label" autocomplete="off" value="" /></div></div></div>
+    </div>
+    <button type="submit">Submit application</button>
+  </form>
+  <script src="/ats/react-select-lite.js"></script>
+  <script src="/mock.js"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Easy apply - Platform Engineer - Initech</title>
+  <link rel="stylesheet" href="/mock.css" />
+</head>
+<body>
+  <!-- Modelled on jobs.smartrecruiters.com/oneclick-ui (inspected live): every control lives inside the open
+       shadow root of an spl-* web component (spl-input, spl-autocomplete, spl-phone-field, spl-select, spl-dropzone). -->
+  <h1>Platform Engineer</h1>
+  <form id="sr-form">
+    <h2>Personal information</h2>
+    <spl-input data-id="first-name-input" data-label="First name*" data-ac="given-name" required></spl-input>
+    <spl-input data-id="last-name-input" data-label="Last name*" data-ac="family-name" required></spl-input>
+    <spl-input data-id="email-input" data-label="Email*" data-type="email" data-ac="email" required></spl-input>
+    <spl-input data-id="confirm-email-input" data-label="Confirm your email*" data-type="email" data-ac="email" required></spl-input>
+    <spl-autocomplete data-label="City*" data-sr-id="location-autocomplete-search-input" data-options='["San Francisco, CA, USA","San Diego, CA, USA","Seattle, WA, USA"]'></spl-autocomplete>
+    <spl-phone-field></spl-phone-field>
+    <h2>Your Profiles</h2>
+    <spl-input data-id="linkedin-input" data-label="LinkedIn"></spl-input>
+    <spl-input data-id="website-input" data-label="Website"></spl-input>
+    <h2>Resume*</h2>
+    <spl-dropzone></spl-dropzone>
+    <h2>Screening questions</h2>
+    <spl-select data-label="Are you legally authorized to work in the United States?*" data-options='["Yes","No"]'></spl-select>
+    <spl-select data-label="Will you now or in the future require sponsorship for employment visa status?*" data-options='["Yes","No"]'></spl-select>
+    <spl-input data-id="q-notice" data-label="What is your notice period at your current employer?*"></spl-input>
+    <spl-textarea data-id="hiring-manager-message-input" data-label="Let the company know about your interest working there"></spl-textarea>
+    <spl-checkbox data-label="I agree to the Privacy Policy and consent to my data being processed."></spl-checkbox>
+    <button type="submit">Submit</button>
+  </form>
+  <script>
+    const css = `label{display:block;font-weight:600;margin:12px 0 4px}input,textarea,button.c-spl-select-field{width:100%;padding:8px;border:1px solid #bbb;border-radius:6px;box-sizing:border-box;font:inherit;background:#fff;text-align:left}
+      [role=listbox]{border:1px solid #ccc;border-radius:6px;margin-top:2px}[role=listbox][hidden]{display:none}[role=option]{padding:8px;cursor:pointer}[role=option]:hover{background:#e8f0fe}`;
+    const shadow = (el, html) => {
+      const r = el.attachShadow({ mode: 'open' });
+      r.innerHTML = `<style>${css}</style>${html}`;
+      return r;
+    };
+    let n = 0;
+    customElements.define('spl-input', class extends HTMLElement {
+      connectedCallback() {
+        const id = this.dataset.id || `spl-form-element_${n++}`;
+        shadow(this, `<label for="${id}">${this.dataset.label}</label><input id="${id}" class="c-spl-input" type="${this.dataset.type || 'text'}" autocomplete="${this.dataset.ac || 'off'}" ${this.hasAttribute('required') ? 'aria-required="true"' : ''}>`);
+      }
+    });
+    customElements.define('spl-textarea', class extends HTMLElement {
+      connectedCallback() {
+        shadow(this, `<label for="${this.dataset.id}">${this.dataset.label}</label><textarea id="${this.dataset.id}" class="c-spl-textarea"></textarea>`);
+      }
+    });
+    customElements.define('spl-checkbox', class extends HTMLElement {
+      connectedCallback() {
+        shadow(this, `<label><input type="checkbox" style="width:auto"> ${this.dataset.label}</label>`);
+      }
+    });
+    customElements.define('spl-dropzone', class extends HTMLElement {
+      connectedCallback() {
+        shadow(this, `<label for="file-input">Choose a file or drop it here</label><input type="file" id="file-input" accept=".pdf,.doc,.docx">`);
+      }
+    });
+    // Autocomplete: input[role=combobox] + listbox, both inside the shadow root; suggestions after typing.
+    customElements.define('spl-autocomplete', class extends HTMLElement {
+      connectedCallback() {
+        const id = `spl-form-element_${n++}`;
+        const r = shadow(this, `<label for="${id}">${this.dataset.label}</label><input id="${id}" class="c-spl-input" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="menu-${id}" autocomplete="off" data-sr-id="${this.dataset.srId}"><div role="listbox" id="menu-${id}" hidden></div>`);
+        const input = r.querySelector('input');
+        const menu = r.querySelector('[role=listbox]');
+        const opts = JSON.parse(this.dataset.options);
+        input.addEventListener('input', () =>
+          setTimeout(() => {
+            const q = input.value.trim().toLowerCase().split(',')[0];
+            menu.replaceChildren(
+              ...opts.filter((o) => q && o.toLowerCase().includes(q)).map((o) => {
+                const d = document.createElement('div');
+                d.setAttribute('role', 'option');
+                d.textContent = o;
+                d.addEventListener('click', () => {
+                  input.value = o;
+                  menu.hidden = true;
+                });
+                return d;
+              }),
+            );
+            menu.hidden = !menu.children.length;
+            input.setAttribute('aria-expanded', String(!menu.hidden));
+          }, 100),
+        );
+      }
+    });
+    // Select: a button[role=combobox] that opens a listbox inside the same shadow root.
+    customElements.define('spl-select', class extends HTMLElement {
+      connectedCallback() {
+        const id = `spl-form-element_${n++}`;
+        const r = shadow(this, `<label id="${id}-label">${this.dataset.label}</label><button type="button" role="combobox" class="c-spl-select-field" id="${id}" aria-haspopup="listbox" aria-expanded="false" aria-controls="${id}-menu" aria-labelledby="${id}-label">Select</button><div role="listbox" id="${id}-menu" hidden></div>`);
+        const btn = r.querySelector('button');
+        const menu = r.querySelector('[role=listbox]');
+        for (const o of JSON.parse(this.dataset.options)) {
+          const d = document.createElement('div');
+          d.setAttribute('role', 'option');
+          d.textContent = o;
+          d.addEventListener('click', () => {
+            btn.textContent = o;
+            menu.hidden = true;
+            btn.setAttribute('aria-expanded', 'false');
+          });
+          menu.append(d);
+        }
+        btn.addEventListener('click', () => {
+          menu.hidden = !menu.hidden;
+          btn.setAttribute('aria-expanded', String(!menu.hidden));
+        });
+      }
+    });
+    customElements.define('spl-phone-field', class extends HTMLElement {
+      connectedCallback() {
+        const id = `spl-form-element_${n++}`;
+        shadow(this, `<label for="${id}">Phone number*</label><input id="${id}" type="tel" class="c-spl-input" autocomplete="off">`);
+      }
+    });
+  </script>
+  <script src="/mock.js"></script>
+</body>
+</html>

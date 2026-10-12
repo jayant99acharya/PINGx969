@@ -1,0 +1,31 @@
+{
+  "name": "@pingx969/api",
+  "version": "0.1.0",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch --clear-screen=false src/main.ts",
+    "start": "node dist/main.js",
+    "build": "node build.mjs"
+  },
+  "dependencies": {
+    "@pingx969/database": "*",
+    "@pingx969/field-detector": "*",
+    "@pingx969/job-parser": "*",
+    "@pingx969/profile": "*",
+    "@pingx969/resume-export": "*",
+    "@pingx969/resume-optimizer": "*",
+    "@pingx969/resume-parser": "*",
+    "@pingx969/shared": "*",
+    "express": "^5.2.1",
+    "helmet": "^8.3.0",
+    "multer": "^2.4.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/multer": "^2.3.0",
+    "@types/pg": "^8.15.0"
+  }
+}

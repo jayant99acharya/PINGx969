@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Software Engineer at Umbrella Corp — Careers</title>
+  <link rel="stylesheet" href="/mock.css" />
+</head>
+<body>
+  <h1>Software Engineer</h1>
+  <p class="sub">Umbrella Corp · Austin, TX</p>
+  <form id="multi" novalidate>
+    <section id="step1">
+      <h2>Step 1 — About you</h2>
+      <div class="row"><label for="fname">Given name</label><input id="fname" autocomplete="given-name" /></div>
+      <div class="row"><label for="lname">Family name</label><input id="lname" autocomplete="family-name" /></div>
+      <!-- React-style controlled input: the value is re-rendered from "state", which only updates on input events -->
+      <div class="row"><label for="mail">Email address</label><input id="mail" type="email" data-controlled="true" /></div>
+      <button type="button" id="next">Next</button>
+    </section>
+    <div id="step2-mount"></div>
+    <div id="experience-list"></div>
+    <button type="button" id="add-exp" hidden>Add work experience</button>
+  </form>
+  <script>
+    // Controlled input emulation
+    const state = { mail: '' };
+    const mail = document.getElementById('mail');
+    mail.addEventListener('input', (e) => { state.mail = e.target.value; });
+    mail.addEventListener('blur', () => { setTimeout(() => { mail.value = state.mail; }, 0); });
+
+    document.getElementById('next').addEventListener('click', () => {
+      document.getElementById('step2-mount').innerHTML = `
+        <section id="step2">
+          <h2>Step 2 — Contact & eligibility</h2>
+          <div class="row"><label for="tel">Mobile number</label><input id="tel" type="tel" /></div>
+          <div class="row"><label for="city">City</label><input id="city" /></div>
+          <div class="row"><label for="spons">Do you require visa sponsorship to work in the US?</label>
+            <select id="spons"><option value="">Select…</option><option>Yes</option><option>No</option></select></div>
+          <div id="spons-followup"></div>
+          <div class="row"><label for="why">Do you have experience working in a regulated industry such as finance or healthcare?</label><textarea id="why"></textarea></div>
+        </section>`;
+      document.getElementById('add-exp').hidden = false;
+      document.getElementById('spons').addEventListener('change', (e) => {
+        document.getElementById('spons-followup').innerHTML = e.target.value === 'Yes'
+          ? '<div class="row"><label for="visa">What visa type do you currently hold?</label><input id="visa" /></div>' : '';
+      });
+    });
+    let n = 0;
+    document.getElementById('add-exp').addEventListener('click', () => {
+      n++;
+      const div = document.createElement('div');
+      div.className = 'exp';
+      div.innerHTML = `<div class="row"><label for="co${n}">Current company</label><input id="co${n}" name="company_${n}" /></div>`;
+      document.getElementById('experience-list').appendChild(div);
+    });
+  </script>
+  <script src="/mock.js"></script>
+</body>
+</html>

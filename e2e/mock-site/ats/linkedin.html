@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Staff Software Engineer | Initech | LinkedIn</title>
+  <link rel="stylesheet" href="/mock.css" />
+  <style>
+    .jobs-easy-apply-modal { position: fixed; inset: 40px 15%; background: #fff; border-radius: 10px; box-shadow: 0 12px 40px rgba(0,0,0,.3); padding: 20px 28px; overflow: auto; }
+    .artdeco-text-input--label, .fb-dash-form-element__label { display: block; font-weight: 600; margin: 12px 0 4px; }
+    .jobs-easy-apply-footer { display: flex; justify-content: flex-end; gap: 8px; }
+  </style>
+</head>
+<body>
+  <!-- Modelled on linkedin.com/jobs/view/<id> Easy Apply: a SPA modal (role=dialog) with steps that are
+       re-rendered on Next (contact info → resume → additional questions → review), artdeco inputs, data-test-*
+       attributes, and an in-page confirmation instead of a navigation. -->
+  <main class="jobs-search__job-details">
+    <div class="job-details-jobs-unified-top-card__container">
+      <h1 class="t-24 t-bold job-details-jobs-unified-top-card__job-title">Staff Software Engineer</h1>
+      <div class="job-details-jobs-unified-top-card__company-name"><a href="#">Initech</a></div>
+      <button class="jobs-apply-button artdeco-button" id="easy-apply" type="button"><span>Easy Apply</span></button>
+    </div>
+    <article class="jobs-description__content"><p>Initech is hiring a Staff Software Engineer to lead our Go and Kubernetes platform.</p></article>
+  </main>
+
+  <template id="modal">
+    <div class="jobs-easy-apply-modal artdeco-modal" role="dialog" aria-labelledby="jobs-apply-header" data-test-modal-id="easy-apply-modal">
+      <h2 id="jobs-apply-header">Apply to Initech</h2>
+      <div class="jobs-easy-apply-content"><form id="ea-form"></form></div>
+      <footer class="jobs-easy-apply-footer"><button type="button" id="ea-next" aria-label="Continue to next step">Next</button></footer>
+    </div>
+  </template>
+
+  <template id="ea-1">
+    <h3 class="t-16 t-bold">Contact info</h3>
+    <div class="jobs-easy-apply-form-section__grouping"><div class="artdeco-text-input--container"><label for="single-line-text-form-component-firstName" class="artdeco-text-input--label">First name</label><input class="artdeco-text-input--input" id="single-line-text-form-component-firstName" type="text" required aria-required="true" /></div></div>
+    <div class="jobs-easy-apply-form-section__grouping"><div class="artdeco-text-input--container"><label for="single-line-text-form-component-lastName" class="artdeco-text-input--label">Last name</label><input class="artdeco-text-input--input" id="single-line-text-form-component-lastName" type="text" required aria-required="true" /></div></div>
+    <div class="jobs-easy-apply-form-section__grouping" data-test-text-entity-list-form-component><label for="text-entity-list-form-component-email" class="fb-dash-form-element__label">Email address</label>
+      <select id="text-entity-list-form-component-email" data-test-text-entity-list-form-select required aria-required="true"><option value="Select an option">Select an option</option><option value="sam.rivera@example.com">sam.rivera@example.com</option></select></div>
+    <div class="jobs-easy-apply-form-section__grouping" data-test-text-entity-list-form-component><label for="text-entity-list-form-component-phoneNumber-country" class="fb-dash-form-element__label">Phone country code</label>
+      <select id="text-entity-list-form-component-phoneNumber-country" data-test-text-entity-list-form-select><option value="Select an option">Select an option</option><option value="United States (+1)">United States (+1)</option><option value="India (+91)">India (+91)</option></select></div>
+    <div class="jobs-easy-apply-form-section__grouping"><div class="artdeco-text-input--container"><label for="single-line-text-form-component-phoneNumber-nationalNumber" class="artdeco-text-input--label">Mobile phone number</label><input class="artdeco-text-input--input" id="single-line-text-form-component-phoneNumber-nationalNumber" type="text" required aria-required="true" /></div></div>
+  </template>
+  <template id="ea-2">
+    <h3 class="t-16 t-bold">Resume</h3>
+    <p>Be sure to include an updated resume</p>
+    <label for="jobs-document-upload-file-input-upload-resume" class="jobs-document-upload__upload-button">Upload resume</label>
+    <input type="file" id="jobs-document-upload-file-input-upload-resume" class="hidden" accept=".pdf,.doc,.docx" />
+  </template>
+  <template id="ea-3">
+    <h3 class="t-16 t-bold">Additional Questions</h3>
+    <div class="jobs-easy-apply-form-section__grouping"><div class="artdeco-text-input--container"><label for="single-line-text-form-component-q1" class="artdeco-text-input--label">How many years of work experience do you have with Kubernetes?</label><input class="artdeco-text-input--input" id="single-line-text-form-component-q1" type="text" required aria-required="true" /></div></div>
+    <fieldset data-test-form-builder-radio-button-form-component="true" id="radio-button-form-component-q2"><legend><span class="fb-dash-form-element__label">Are you legally authorized to work in the United States?</span></legend>
+      <div data-test-text-selectable-option="0"><input type="radio" name="q2" id="q2-yes" value="Yes" /><label for="q2-yes" data-test-text-selectable-option__label="Yes">Yes</label></div>
+      <div data-test-text-selectable-option="1"><input type="radio" name="q2" id="q2-no" value="No" /><label for="q2-no" data-test-text-selectable-option__label="No">No</label></div></fieldset>
+    <div class="jobs-easy-apply-form-section__grouping" data-test-text-entity-list-form-component><label for="text-entity-list-form-component-q3" class="fb-dash-form-element__label">Will you now, or in the future, require sponsorship for employment visa status (e.g. H-1B visa status)?</label>
+      <select id="text-entity-list-form-component-q3" data-test-text-entity-list-form-select required aria-required="true"><option value="Select an option">Select an option</option><option value="Yes">Yes</option><option value="No">No</option></select></div>
+  </template>
+  <template id="ea-4">
+    <h3 class="t-16 t-bold">Review your application</h3>
+    <p>The employer will also receive a copy of your profile.</p>
+  </template>
+
+  <script>
+    let step = 0;
+    let modal = null;
+    const render = (n) => {
+      step = n;
+      const form = modal.querySelector('#ea-form');
+      form.replaceChildren(document.getElementById(`ea-${n}`).content.cloneNode(true));
+      const next = modal.querySelector('#ea-next');
+      next.textContent = n === 3 ? 'Review' : n === 4 ? 'Submit application' : 'Next';
+      next.setAttribute('aria-label', n === 4 ? 'Submit application' : 'Continue to next step');
+    };
+    document.getElementById('easy-apply').addEventListener('click', () => {
+      if (modal) return;
+      document.body.append(document.getElementById('modal').content.cloneNode(true));
+      modal = document.querySelector('.jobs-easy-apply-modal');
+      modal.querySelector('#ea-next').addEventListener('click', () => {
+        if (step < 4) return render(step + 1);
+        // Submitted: LinkedIn swaps the modal content without navigating.
+        modal.querySelector('.jobs-easy-apply-content').innerHTML = '<h3>Your application was sent to Initech!</h3>';
+        modal.querySelector('footer').remove();
+      });
+      render(1);
+    });
+  </script>
+</body>
+</html>

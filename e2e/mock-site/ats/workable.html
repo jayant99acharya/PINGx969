@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Software Engineer - Hooli - Application</title>
+  <link rel="stylesheet" href="/mock.css" />
+  <link rel="stylesheet" href="/ats/ats.css" />
+</head>
+<body>
+  <!-- Modelled on apply.workable.com/<company>/j/<id>/apply (inspected live): data-ui attributes, labels via
+       aria-labelledby, choice questions as div[role=radio] wrappers around hidden native radios, GDPR role=checkbox. -->
+  <h1>Software Engineer</h1>
+  <form data-ui="application-form" id="wk-form">
+    <div><span id="firstname_label">First name<span aria-hidden="true">*</span></span><input type="text" id="firstname" name="firstname" data-ui="firstname" aria-labelledby="firstname_label" aria-required="true" /></div>
+    <div><span id="lastname_label">Last name<span aria-hidden="true">*</span></span><input type="text" id="lastname" name="lastname" data-ui="lastname" aria-labelledby="lastname_label" aria-required="true" /></div>
+    <div><span id="email_label">Email<span aria-hidden="true">*</span></span><input type="email" id="email" name="email" data-ui="email" aria-labelledby="email_label" aria-required="true" /></div>
+    <div><span id="phone_label">Phone</span><button type="button" aria-haspopup="dialog" class="iti__selected-country" aria-label="Change country for phone number, currently selected United States (+1)">🇺🇸</button><input type="tel" id="input_phone" name="phone" autocomplete="tel" aria-labelledby="phone_label" /></div>
+    <div><span id="address_label">Address</span><input type="text" id="address" name="address" data-ui="address" aria-labelledby="address_label" /></div>
+    <div><span id="resume_label">Resume<span aria-hidden="true">*</span></span><input type="file" id="input_files_input_x1" data-ui="resume" aria-labelledby="resume_label" /></div>
+    <div><span id="CA_43956_label">Please provide a link to your LinkedIn Profile</span><input type="text" id="CA_43956" name="CA_43956" data-ui="CA_43956" aria-labelledby="CA_43956_label" /></div>
+
+    <fieldset role="radiogroup" data-ui="CA_41000" aria-labelledby="CA_41000_label"><span id="CA_41000_label">Are you legally authorized to work in the United States?<span aria-hidden="true">*</span></span>
+      <div role="radio" class="aria-choice" id="wrapper_a1" aria-checked="false" tabindex="0"><input type="radio" name="CA_41000" id="a1" value="true" /><span class="box"></span><svg><title>SVGs not supported by this browser.</title></svg><label for="a1">Yes</label></div>
+      <div role="radio" class="aria-choice" id="wrapper_a2" aria-checked="false" tabindex="-1"><input type="radio" name="CA_41000" id="a2" value="false" /><span class="box"></span><svg><title>SVGs not supported by this browser.</title></svg><label for="a2">No</label></div>
+    </fieldset>
+    <fieldset role="radiogroup" data-ui="CA_41001" aria-labelledby="CA_41001_label"><span id="CA_41001_label">Will you now or in the future require sponsorship for employment visa status?<span aria-hidden="true">*</span></span>
+      <div role="radio" class="aria-choice" id="wrapper_b1" aria-checked="false" tabindex="0"><input type="radio" name="CA_41001" id="b1" value="true" /><span class="box"></span><label for="b1">Yes</label></div>
+      <div role="radio" class="aria-choice" id="wrapper_b2" aria-checked="false" tabindex="-1"><input type="radio" name="CA_41001" id="b2" value="false" /><span class="box"></span><label for="b2">No</label></div>
+    </fieldset>
+    <fieldset role="radiogroup" data-ui="CA_41462" aria-labelledby="CA_41462_label"><span id="CA_41462_label">How would you describe your English fluency?</span>
+      <div role="radio" class="aria-choice" aria-checked="false" tabindex="0"><input type="radio" name="CA_41462" id="c1" value="basic" /><span class="box"></span><label for="c1">Basic</label></div>
+      <div role="radio" class="aria-choice" aria-checked="false" tabindex="-1"><input type="radio" name="CA_41462" id="c2" value="fluent" /><span class="box"></span><label for="c2">Fluent</label></div>
+    </fieldset>
+    <div><span id="CA_52583_label">Please provide a brief summary of why you are interested in this role<span aria-hidden="true">*</span></span><textarea id="CA_52583" name="CA_52583" data-ui="CA_52583" aria-labelledby="CA_52583_label"></textarea></div>
+    <div role="checkbox" class="aria-choice" id="gdpr-box" aria-checked="false" tabindex="0" aria-labelledby="gdpr_label"><input type="checkbox" name="gdpr" /><span class="box"></span><span id="gdpr_label">I have read, understand and accept the content of the Privacy Notice and consent to the processing of my data.</span></div>
+    <button type="submit" data-ui="apply-button">Submit application</button>
+  </form>
+  <script>
+    document.querySelectorAll('[role="radiogroup"]').forEach((g) => {
+      g.querySelectorAll('[role="radio"]').forEach((r) =>
+        r.addEventListener('click', () => {
+          g.querySelectorAll('[role="radio"]').forEach((o) => {
+            o.setAttribute('aria-checked', String(o === r));
+            o.querySelector('input').checked = o === r;
+          });
+        }),
+      );
+    });
+    const gdpr = document.getElementById('gdpr-box');
+    gdpr.addEventListener('click', () => {
+      const on = gdpr.getAttribute('aria-checked') !== 'true';
+      gdpr.setAttribute('aria-checked', String(on));
+      gdpr.querySelector('input').checked = on;
+    });
+  </script>
+  <script src="/mock.js"></script>
+</body>
+</html>

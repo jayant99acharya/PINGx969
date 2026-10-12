@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Backend Developer - Acme Corp Careers</title>
+  <link rel="stylesheet" href="/mock.css" />
+</head>
+<body>
+  <h2 data-automation-id="jobPostingHeader">Backend Developer</h2>
+  <form id="wd-form" action="/submitted.html">
+    <div data-automation-id="legalNameSection_firstName"><label for="wd-1">Given Name(s)</label><input id="wd-1" type="text" /></div>
+    <div data-automation-id="legalNameSection_lastName"><label for="wd-2">Family Name</label><input id="wd-2" type="text" /></div>
+    <div data-automation-id="email"><label for="wd-3">Email Address</label><input id="wd-3" type="text" /></div>
+    <div data-automation-id="phone-number"><label for="wd-4">Phone Number</label><input id="wd-4" type="text" /></div>
+    <div data-automation-id="addressSection_addressLine1"><label for="wd-5">Address Line 1</label><input id="wd-5" type="text" /></div>
+    <div data-automation-id="addressSection_city"><label for="wd-6">City</label><input id="wd-6" type="text" /></div>
+    <div data-automation-id="addressSection_countryRegion"><label for="wd-7">State</label>
+      <select id="wd-7"><option value="">Select One</option><option value="CA">California</option><option value="OR">Oregon</option><option value="WA">Washington</option></select></div>
+    <div data-automation-id="addressSection_postalCode"><label for="wd-8">Postal Code</label><input id="wd-8" type="text" /></div>
+    <div data-automation-id="countryDropdown"><label for="wd-9">Country</label>
+      <select id="wd-9"><option value="">Select One</option><option value="usa">United States of America</option><option value="can">Canada</option></select></div>
+    <fieldset>
+      <legend>Are you legally eligible to work in the United States?</legend>
+      <label><input type="radio" name="wd-elig" value="1" /> Yes</label>
+      <label><input type="radio" name="wd-elig" value="0" /> No</label>
+    </fieldset>
+    <fieldset>
+      <legend>Are you willing to relocate?</legend>
+      <label><input type="radio" name="wd-reloc" value="yes" /> Yes</label>
+      <label><input type="radio" name="wd-reloc" value="no" /> No</label>
+    </fieldset>
+    <div><label for="wd-yoe">Years of professional experience</label><input id="wd-yoe" type="number" min="0" max="50" /></div>
+    <div><label for="wd-start">Available start date</label><input id="wd-start" type="date" /></div>
+    <fieldset>
+      <legend>Which of these technologies have you used?</legend>
+      <label><input type="checkbox" name="wd-tech" value="python" /> Python</label>
+      <label><input type="checkbox" name="wd-tech" value="go" /> Go</label>
+      <label><input type="checkbox" name="wd-tech" value="aws" /> AWS</label>
+    </fieldset>
+    <div><label><input type="checkbox" id="wd-certify" name="certify" /> I certify that the information provided is true and complete.</label></div>
+    <button type="submit">Submit</button>
+  </form>
+  <script src="/mock.js"></script>
+</body>
+</html>

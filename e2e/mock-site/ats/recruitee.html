@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Initech - Senior DevOps Engineer - Application</title>
+  <meta property="og:site_name" content="Initech" />
+  <link rel="stylesheet" href="/mock.css" />
+  <style>.cc-button { margin-top: 0; background: #fff; color: #222; border: 1px solid #bbb; } .cc-menu { list-style: none; border: 1px solid #ccc; padding: 4px 0; margin: 2px 0; } .phone-row { display: flex; gap: 6px; }</style>
+</head>
+<body>
+  <!-- Modelled on <company>.recruitee.com/o/<slug>/c/new (inspected live): a phone widget whose country-code button
+       is labelled "Select country calling code: Netherlands" and whose number box is pre-typed with "+31",
+       CV and cover letter uploads, and radio screening questions. -->
+  <h1>Senior DevOps Engineer</h1>
+  <form id="rc-form" class="recruitee-offer-form">
+    <div><label for="candidate-name">Full name</label><input id="candidate-name" name="candidate[name]" type="text" autocomplete="name" /></div>
+    <div><label for="candidate-email">Email address</label><input id="candidate-email" name="candidate[email]" type="email" autocomplete="email" /></div>
+    <div><label for="candidate-phone">Phone number</label>
+      <div class="phone-row">
+        <button type="button" class="cc-button" aria-haspopup="listbox" aria-expanded="false" aria-label="Select country calling code: Netherlands">🇳🇱 +31</button>
+        <input id="candidate-phone" name="candidate[phone]" type="tel" value="+31 " />
+      </div></div>
+    <div><label for="candidate-cv">CV or resume</label><input id="candidate-cv" name="candidate[cv]" type="file" /></div>
+    <div><label for="candidate-location">Where are you currently located?</label><input id="candidate-location" name="candidate[open_question_answers_attributes][0][content]" type="text" /></div>
+    <fieldset><legend>Do you need a VISA (sponsorship/prolongation) ?</legend>
+      <label><input type="radio" name="candidate[open_question_answers_attributes][1][content]" value="Yes" /> Yes</label>
+      <label><input type="radio" name="candidate[open_question_answers_attributes][1][content]" value="No" /> No</label></fieldset>
+    <div><label for="candidate-notice">What is your current notice period?</label><input id="candidate-notice" name="candidate[open_question_answers_attributes][2][content]" type="text" /></div>
+    <button type="submit">Send</button>
+  </form>
+  <script>
+    const btn = document.querySelector('.cc-button');
+    const phone = document.getElementById('candidate-phone');
+    let menu = null;
+    btn.addEventListener('click', () => {
+      if (menu) return menu.remove(), (menu = null);
+      menu = document.createElement('ul');
+      menu.className = 'cc-menu';
+      menu.setAttribute('role', 'listbox');
+      for (const [name, code] of [['Netherlands', '+31'], ['United States', '+1'], ['India', '+91']]) {
+        const li = document.createElement('li');
+        li.setAttribute('role', 'option');
+        li.textContent = `${name} (${code})`;
+        li.addEventListener('click', () => {
+          btn.textContent = code;
+          btn.setAttribute('aria-label', `Select country calling code: ${name}`);
+          if (/^\+\d+\s*$/.test(phone.value)) phone.value = `${code} `;
+          menu.remove();
+          menu = null;
+        });
+        menu.append(li);
+      }
+      btn.after(menu);
+    });
+  </script>
+  <script src="/mock.js"></script>
+</body>
+</html>

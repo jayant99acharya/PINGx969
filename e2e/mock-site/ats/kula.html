@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>SDET – Bengaluru | Initech Careers</title>
+  <link rel="stylesheet" href="/mock.css" />
+  <style>
+    .chakra-tabs__tablist { display: flex; gap: 16px; border-bottom: 1px solid #ddd; margin-bottom: 16px; }
+    .chakra-tabs__tab { margin-top: 0; background: none; color: #222; border-radius: 0; }
+    .chakra-tabs__tab[aria-selected="true"] { border-bottom: 2px solid #2e9e6b; }
+    .chakra-form-control { margin: 12px 0; }
+    .chakra-form__label { display: block; font-weight: 600; margin-bottom: 4px; }
+    [data-kui-field] { display: flex; border: 1px solid #bbb; border-radius: 6px; padding: 8px; }
+    [data-kui-field] input { border: 0; outline: none; flex: 1; font: inherit; }
+    .phone-country { margin-top: 0; background: #fff; color: #222; border: 0; border-right: 1px solid #ddd; padding: 0 8px; }
+    .country-menu { position: absolute; background: #fff; border: 1px solid #ccc; border-radius: 6px; list-style: none; margin: 0; padding: 4px 0; z-index: 20; }
+    .country-menu li { padding: 6px 10px; cursor: pointer; }
+    .chakra-radio { display: inline-flex; gap: 6px; margin-right: 16px; align-items: center; }
+    .chakra-radio__input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+    .chakra-radio__control { width: 14px; height: 14px; border: 2px solid #555; border-radius: 50%; }
+    .chakra-radio__input:checked + .chakra-radio__control { background: #2e9e6b; border-color: #2e9e6b; }
+  </style>
+</head>
+<body class="chakra-ui-light">
+  <!-- Modelled on careers.kula.ai/<company>/<id>-<slug> (inspected live): a Next.js App Router page (whole-document
+       hydration), Chakra UI with an "Application form" tab, inputs named info.* / additional_info._<id> whose
+       <label for> points at a different, non-existent id, "Enter …" placeholders, a "Select country" flag button
+       (aria-haspopup=listbox) on the phone field, and Chakra radio groups without an accessible name. -->
+  <script>self.__next_f = self.__next_f || []; self.__next_f.push([1, "1:\"$Sreact.fragment\""]);</script>
+  <h1>SDET</h1>
+  <div class="chakra-tabs__tablist" role="tablist">
+    <button type="button" role="tab" class="chakra-tabs__tab" aria-selected="true" id="tab-details">Job details</button>
+    <button type="button" role="tab" class="chakra-tabs__tab" aria-selected="false" id="tab-apply">Application form</button>
+  </div>
+  <div id="panel"><p>Initech is hiring an SDET to own test automation (Selenium, Appium) for our insurance platform.</p></div>
+
+  <template id="apply">
+    <form action="#" class="chakra-stack job-form-no-autofill-highlight" data-testid="job-form">
+      <p class="chakra-text">Personal Information</p>
+      <div class="chakra-stack chakra-form-control" data-test-id="resume-upload" role="group"><label class="chakra-form__label" for="field-_r_0_">Autofill from resume</label>
+        <input type="file" data-testid="resume-upload-input" class="chakra-input" style="width:1px;height:1px;opacity:0" /><p>Save time by uploading your resume.</p></div>
+      <div class="chakra-stack chakra-form-control" data-test-id="first-name" role="group"><label id="field-_r_1_-label" for="field-_r_1_" class="chakra-form__label">First name<span aria-hidden="true">*</span></label>
+        <div class="w-full"><div class="job-form-kula-field"><div data-kui-field="true"><input id="info.first_name" name="info.first_name" type="text" placeholder="Enter first name" autocomplete="on" maxlength="250" /></div></div></div></div>
+      <div class="chakra-stack chakra-form-control" data-test-id="last-name" role="group"><label id="field-_r_5_-label" for="field-_r_5_" class="chakra-form__label">Last name<span aria-hidden="true">*</span></label>
+        <div class="w-full"><div class="job-form-kula-field"><div data-kui-field="true"><input id="info.last_name" name="info.last_name" type="text" placeholder="Enter last name" autocomplete="on" maxlength="250" /></div></div></div></div>
+      <div class="chakra-stack chakra-form-control" data-test-id="email" role="group"><label id="field-_r_9_-label" for="field-_r_9_" class="chakra-form__label">Email<span aria-hidden="true">*</span></label>
+        <div class="w-full"><div class="job-form-kula-field"><div data-kui-field="true"><input id="info.email" name="info.email" type="email" placeholder="Enter email" autocomplete="on" /></div></div></div></div>
+      <div class="chakra-stack chakra-form-control" data-test-id="phone" role="group"><label class="chakra-form__label" for="phone">Phone<span aria-hidden="true">*</span></label>
+        <div class="w-full"><div data-kui-field="true" style="position:relative">
+          <button type="button" class="phone-country" aria-haspopup="listbox" aria-expanded="false" aria-label="Select country. Currently India" data-state="closed">🇮🇳 +91</button>
+          <input id="phone" type="tel" placeholder="Enter phone number" /><input type="hidden" name="info-phone-e164" />
+        </div></div></div>
+      <div class="chakra-stack chakra-form-control" data-test-id="linkedin" role="group"><label class="chakra-form__label" for="field-_r_d_">LinkedIn URL</label>
+        <div class="w-full"><div data-kui-field="true"><input id="info.linkedin_url" name="info.linkedin_url" type="url" placeholder="Enter linkedin url" autocomplete="on" /></div></div></div>
+      <div class="chakra-stack chakra-form-control" data-test-id="resume" role="group"><label class="chakra-form__label" for="resume">Resume<span aria-hidden="true">*</span></label>
+        <input type="file" id="resume" class="chakra-input" style="width:1px;height:1px;opacity:0" /></div>
+      <p class="chakra-text">Additional Information</p>
+      <div class="chakra-stack chakra-form-control" data-test-id="text" role="group"><label class="chakra-form__label" for="field-_r_u_">How many years of experience do you have with Selenium?<span aria-hidden="true">*</span></label>
+        <div class="w-full"><div data-kui-field="true"><input id="additional_info._9217" name="additional_info._9217" type="text" placeholder="Enter how many years of experience do you have with selenium?" /></div></div></div>
+      <div class="chakra-stack chakra-form-control" data-test-id="text" role="group"><label class="chakra-form__label" for="field-_r_11_">What is your current compensation ?<span aria-hidden="true">*</span></label>
+        <div class="w-full"><div data-kui-field="true"><input id="additional_info._9213" name="additional_info._9213" type="text" placeholder="Enter what is your current compensation ?" /></div></div></div>
+      <div class="chakra-stack chakra-form-control" data-test-id="radio" role="group"><label class="chakra-form__label" for="field-_r_2u_">Are you legally authorized to work in the United States?<span aria-hidden="true">*</span></label>
+        <div role="radiogroup" class="chakra-radio-group">
+          <label class="chakra-radio"><input type="radio" class="chakra-radio__input" name="radio-_r_2v_" id="radio-_r_30_" value="Yes" /><span class="chakra-radio__control"></span><span class="chakra-radio__label">Yes</span></label>
+          <label class="chakra-radio"><input type="radio" class="chakra-radio__input" name="radio-_r_2v_" id="radio-_r_31_" value="No" /><span class="chakra-radio__control"></span><span class="chakra-radio__label">No</span></label>
+        </div></div>
+      <div class="chakra-stack chakra-form-control" data-test-id="radio" role="group"><label class="chakra-form__label" for="field-_r_32_">Are you willing to work from Office in Bangalore?<span aria-hidden="true">*</span></label>
+        <div role="radiogroup" class="chakra-radio-group">
+          <label class="chakra-radio"><input type="radio" class="chakra-radio__input" name="radio-_r_33_" id="radio-_r_34_" value="Yes" /><span class="chakra-radio__control"></span><span class="chakra-radio__label">Yes</span></label>
+          <label class="chakra-radio"><input type="radio" class="chakra-radio__input" name="radio-_r_33_" id="radio-_r_35_" value="No" /><span class="chakra-radio__control"></span><span class="chakra-radio__label">No</span></label>
+        </div></div>
+      <button type="submit" class="chakra-button">Apply for this position</button>
+    </form>
+  </template>
+
+  <script>
+    // Simulated Next.js hydration: React claims <body> ~800 ms after load.
+    addEventListener('load', () => setTimeout(() => (document.body.__reactFiber$kula = {}), 800));
+    const panel = document.getElementById('panel');
+    const details = panel.innerHTML;
+    const tabs = { details: document.getElementById('tab-details'), apply: document.getElementById('tab-apply') };
+    const select = (which) => {
+      for (const [k, t] of Object.entries(tabs)) t.setAttribute('aria-selected', String(k === which));
+      if (which === 'details') return void (panel.innerHTML = details);
+      panel.replaceChildren(document.getElementById('apply').content.cloneNode(true));
+      history.replaceState(null, '', location.pathname + '#apply');
+      const btn = panel.querySelector('.phone-country');
+      let menu = null;
+      btn.addEventListener('click', () => {
+        if (menu) return menu.remove(), (menu = null);
+        menu = document.createElement('ul');
+        menu.className = 'country-menu';
+        menu.setAttribute('role', 'listbox');
+        for (const [name, code] of [['India', '+91'], ['United States', '+1'], ['United Kingdom', '+44']]) {
+          const li = document.createElement('li');
+          li.setAttribute('role', 'option');
+          li.textContent = `${name} (${code})`;
+          li.addEventListener('click', () => {
+            btn.textContent = code;
+            btn.setAttribute('aria-label', `Select country. Currently ${name}`);
+            menu.remove();
+            menu = null;
+          });
+          menu.append(li);
+        }
+        btn.parentElement.append(menu);
+      });
+      panel.querySelector('form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        location.href = '/submitted.html?from=kula';
+      });
+    };
+    tabs.details.addEventListener('click', () => select('details'));
+    tabs.apply.addEventListener('click', () => select('apply'));
+  </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Senior Data Engineer - Acme Careers</title>
+  <link rel="stylesheet" href="/mock.css" />
+  <link rel="stylesheet" href="/ats/ats.css" />
+</head>
+<body>
+  <!-- Modelled on Workday's apply flow (myworkdayjobs.com): data-automation-id attributes, "Select One"
+       listbox buttons with portal menus, and a multi-step wizard that re-renders each page. -->
+  <div data-automation-id="applyFlowPage">
+    <h2 data-automation-id="jobPostingHeader">Senior Data Engineer</h2>
+    <ol data-automation-id="progressBar"><li>My Information</li><li>My Experience</li><li>Application Questions</li><li>Voluntary Disclosures</li><li>Review</li></ol>
+    <div id="page" data-automation-id="applyFlowPageContent"></div>
+    <div data-automation-id="pageFooter">
+      <button type="button" data-automation-id="bottom-navigation-next-button" id="next">Save and Continue</button>
+    </div>
+  </div>
+
+  <template id="step-1">
+    <h3 data-automation-id="pageHeader">My Information</h3>
+    <div data-automation-id="formField-source"><label for="source--source">How Did You Hear About Us?<abbr title="required">*</abbr></label>
+      <button type="button" class="dropdown-button" id="source--source" aria-haspopup="listbox" aria-expanded="false" data-options='["Job Board","Company Website","Referral","LinkedIn"]'>Select One</button><input type="hidden" name="source" /></div>
+    <fieldset data-automation-id="formField-candidateIsPreviousWorker"><legend>Have you previously worked for Acme as an employee or contractor?<abbr title="required">*</abbr></legend>
+      <label><input type="radio" name="candidateIsPreviousWorker" value="true" /> Yes</label><label><input type="radio" name="candidateIsPreviousWorker" value="false" /> No</label></fieldset>
+    <div data-automation-id="formField-country"><label for="country--country">Country<abbr title="required">*</abbr></label>
+      <button type="button" class="dropdown-button" id="country--country" aria-haspopup="listbox" aria-expanded="false" data-automation-id="countryDropdown" data-options='["United States of America","Canada","India"]'>United States of America</button><input type="hidden" name="country" value="United States of America" /></div>
+    <div data-automation-id="formField-legalName--firstName"><label for="name--legalName--firstName">Given Name(s)<abbr title="required">*</abbr></label><input type="text" id="name--legalName--firstName" name="legalName--firstName" aria-required="true" /></div>
+    <div data-automation-id="formField-legalName--lastName"><label for="name--legalName--lastName">Family Name<abbr title="required">*</abbr></label><input type="text" id="name--legalName--lastName" name="legalName--lastName" aria-required="true" /></div>
+    <div data-automation-id="formField-addressLine1"><label for="address--addressLine1">Address Line 1<abbr title="required">*</abbr></label><input type="text" id="address--addressLine1" name="addressLine1" aria-required="true" /></div>
+    <div data-automation-id="formField-city"><label for="address--city">City<abbr title="required">*</abbr></label><input type="text" id="address--city" name="city" aria-required="true" /></div>
+    <div data-automation-id="formField-countryRegion"><label for="address--countryRegion">State<abbr title="required">*</abbr></label>
+      <button type="button" class="dropdown-button" id="address--countryRegion" aria-haspopup="listbox" aria-expanded="false" data-options='["Arizona","California","New York","Washington"]'>Select One</button><input type="hidden" name="countryRegion" /></div>
+    <div data-automation-id="formField-postalCode"><label for="address--postalCode">Postal Code<abbr title="required">*</abbr></label><input type="text" id="address--postalCode" name="postalCode" aria-required="true" /></div>
+    <div data-automation-id="formField-phoneType"><label for="phoneNumber--phoneType">Phone Device Type<abbr title="required">*</abbr></label>
+      <button type="button" class="dropdown-button" id="phoneNumber--phoneType" aria-haspopup="listbox" aria-expanded="false" data-options='["Mobile","Home","Work"]'>Select One</button><input type="hidden" name="phoneType" /></div>
+    <div data-automation-id="formField-phoneNumber"><label for="phoneNumber--phoneNumber">Phone Number<abbr title="required">*</abbr></label><input type="text" id="phoneNumber--phoneNumber" name="phoneNumber" aria-required="true" /></div>
+  </template>
+
+  <template id="step-2">
+    <h3 data-automation-id="pageHeader">My Experience</h3>
+    <div data-automation-id="workExperienceSection"><h4>Work Experience 1</h4>
+      <div data-automation-id="formField-jobTitle"><label for="workExperience-1--jobTitle">Job Title<abbr title="required">*</abbr></label><input type="text" id="workExperience-1--jobTitle" name="jobTitle" /></div>
+      <div data-automation-id="formField-companyName"><label for="workExperience-1--companyName">Company<abbr title="required">*</abbr></label><input type="text" id="workExperience-1--companyName" name="companyName" /></div>
+    </div>
+    <div data-automation-id="formField-linkedinQuestion"><label for="socialNetworkAccounts--linkedInAccount">LinkedIn</label><input type="text" id="socialNetworkAccounts--linkedInAccount" name="linkedInAccount" /></div>
+    <div data-automation-id="resumeSection"><label for="resumeAttachments--attachments">Resume/CV<abbr title="required">*</abbr></label><input type="file" id="resumeAttachments--attachments" data-automation-id="file-upload-input-ref" /></div>
+  </template>
+
+  <template id="step-3">
+    <h3 data-automation-id="pageHeader">Application Questions</h3>
+    <div data-automation-id="formField-q1"><label for="primaryQuestionnaire--q1">Are you legally authorized to work in the United States?<abbr title="required">*</abbr></label>
+      <button type="button" class="dropdown-button" id="primaryQuestionnaire--q1" aria-haspopup="listbox" aria-expanded="false" data-options='["Yes","No"]'>Select One</button><input type="hidden" name="q1" /></div>
+    <div data-automation-id="formField-q2"><label for="primaryQuestionnaire--q2">Will you now or in the future require sponsorship for employment visa status (e.g., H-1B)?<abbr title="required">*</abbr></label>
+      <button type="button" class="dropdown-button" id="primaryQuestionnaire--q2" aria-haspopup="listbox" aria-expanded="false" data-options='["Yes","No"]'>Select One</button><input type="hidden" name="q2" /></div>
+    <div data-automation-id="formField-q3"><label for="primaryQuestionnaire--q3">Do you have an active security clearance?<abbr title="required">*</abbr></label>
+      <button type="button" class="dropdown-button" id="primaryQuestionnaire--q3" aria-haspopup="listbox" aria-expanded="false" data-options='["Yes","No"]'>Select One</button><input type="hidden" name="q3" /></div>
+  </template>
+
+  <template id="step-4">
+    <h3 data-automation-id="pageHeader">Voluntary Disclosures</h3>
+    <div data-automation-id="formField-gender"><label for="personalInfoUS--gender">Gender</label>
+      <button type="button" class="dropdown-button" id="personalInfoUS--gender" aria-haspopup="listbox" aria-expanded="false" data-options='["Male","Female","I do not wish to answer"]'>Select One</button><input type="hidden" name="gender" /></div>
+    <div data-automation-id="formField-veteranStatus"><label for="personalInfoUS--veteranStatus">Veteran Status</label>
+      <button type="button" class="dropdown-button" id="personalInfoUS--veteranStatus" aria-haspopup="listbox" aria-expanded="false" data-options='["I am not a veteran","I identify as one or more of the classifications of protected veteran","I do not wish to answer"]'>Select One</button><input type="hidden" name="veteranStatus" /></div>
+    <div data-automation-id="formField-acceptTermsAndAgreements"><label><input type="checkbox" data-automation-id="agreementCheckbox" name="acceptTermsAndAgreements" /> I have read and consent to the terms and conditions.</label></div>
+  </template>
+
+  <template id="step-5">
+    <h3 data-automation-id="pageHeader">Review</h3>
+    <p>Review your application, then submit.</p>
+    <form id="wd-submit" action="/submitted.html"><button type="submit" data-automation-id="bottom-navigation-submit-button">Submit</button></form>
+  </template>
+
+  <script src="/ats/listbox-lite.js"></script>
+  <script>
+    let step = 0;
+    const page = document.getElementById('page');
+    const next = document.getElementById('next');
+    const show = (n) => {
+      step = n;
+      // Workday replaces the page content on every step (new DOM nodes, not just shown/hidden).
+      page.replaceChildren(document.getElementById(`step-${n}`).content.cloneNode(true));
+      mountListboxes(page);
+      next.hidden = n === 5;
+      page.querySelector('form')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        location.href = '/submitted.html?from=workday';
+      });
+    };
+    next.addEventListener('click', () => show(step + 1));
+    show(1);
+  </script>
+</body>
+</html>

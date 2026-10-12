@@ -1,0 +1,20 @@
+{
+  "name": "@pingx969/resume-export",
+  "version": "0.1.0",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@pingx969/shared": "*",
+    "jszip": "^3.10.2",
+    "@xmldom/xmldom": "^0.9.12",
+    "pdf-lib": "^1.17.1",
+    "docx": "^9.8.1",
+    "@pingx969/resume-parser": "*"
+  }
+}
