@@ -15,6 +15,6 @@
     "zod": "^4.6.5",
     "@pingx969/profile": "*",
     "@pingx969/resume-parser": "*",
-    "@anthropic-ai/sdk": "^0.131.0"
+    "@anthropic-ai/sdk": "^0.132.1"
   }
 }
