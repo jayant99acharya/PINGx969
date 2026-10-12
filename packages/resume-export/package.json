@@ -14,7 +14,7 @@
     "jszip": "^3.10.2",
     "@xmldom/xmldom": "^0.9.12",
     "pdf-lib": "^1.17.1",
-    "docx": "^9.8.1",
+    "docx": "^9.9.0",
     "@pingx969/resume-parser": "*"
   }
 }
